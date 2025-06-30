@@ -1,0 +1,78 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <SccProjectName>SAK</SccProjectName>
+        <SccLocalPath>SAK</SccLocalPath>
+        <SccAuxPath>SAK</SccAuxPath>
+        <SccProvider>SAK</SccProvider>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <RootNamespace>SystemGroup.General.CourseEnrollment.Web</RootNamespace>
+        <AssemblyName>SystemGroup.General.CourseEnrollment.Web</AssemblyName>
+        <TargetFrameworks>net8.0-windows;net48</TargetFrameworks>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DebugType>full</DebugType>
+        <NoWarn />
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <DebugType>pdbonly</DebugType>
+    </PropertyGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)'=='net8.0-windows'">
+        <PackageReference Include="CoreForms.Web.Extensions" />
+        <PackageReference Include="CoreForms.Web" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)'=='net48'">
+        <Reference Include="System.ServiceModel" />
+        <Reference Include="System.ServiceModel.Web" />
+        <Reference Include="System.Web.Extensions" />
+        <Reference Include="System.Web" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="CoursePages\Edit.js" />
+      <None Remove="Edit.aspx" />
+      <None Remove="EnrollmentPages\Edit.aspx" />
+      <None Remove="EnrollmentPages\Edit.js" />
+      <None Remove="PartyMajorPages\Edit.aspx" />
+      <None Remove="SemesterCoursePlanPages\Edit.js" />
+      <None Remove="SemesterPages\Edit.aspx" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Include="CoursePages\Edit.aspx" />
+      <EmbeddedResource Include="CoursePages\Edit.js" />
+      <EmbeddedResource Include="EnrollmentPages\Edit.aspx" />
+      <EmbeddedResource Include="EnrollmentPages\Edit.js" />
+      <EmbeddedResource Include="MajorPages\Edit.aspx" />
+      <EmbeddedResource Include="MajorPages\Edit.js" />
+      <EmbeddedResource Include="PartyMajorPages\Edit.aspx" />
+      <EmbeddedResource Include="SemesterCoursePlanPages\Edit.aspx" />
+      <EmbeddedResource Include="SemesterCoursePlanPages\Edit.js" />
+      <EmbeddedResource Include="SemesterPages\Edit.aspx" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="SystemGroup.Framework">
+            <HintPath>$(RahkaranBinPath)\SystemGroup.Framework.dll</HintPath>
+        </Reference>
+        <Reference Include="SystemGroup.Data.Linq">
+            <HintPath>$(RahkaranBinPath)\SystemGroup.Data.Linq.dll</HintPath>
+        </Reference>
+        <Reference Include="SystemGroup.General.CourseEnrollment.Common">
+            <HintPath>$(RahkaranBinPath)\SystemGroup.General.CourseEnrollment.Common.dll</HintPath>
+        </Reference>
+        <Reference Include="SystemGroup.Web">
+            <HintPath>$(RahkaranBinPath)\SystemGroup.Web.dll</HintPath>
+        </Reference>
+        <Reference Include="Telerik.Web.UI">
+            <HintPath>$(RahkaranBinPath)\Telerik.Web.UI.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,108 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <SccProjectName>SAK</SccProjectName>
+        <SccLocalPath>SAK</SccLocalPath>
+        <SccAuxPath>SAK</SccAuxPath>
+        <SccProvider>SAK</SccProvider>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <RootNamespace>SystemGroup.General.CourseEnrollment.Common</RootNamespace>
+        <AssemblyName>SystemGroup.General.CourseEnrollment.Common</AssemblyName>
+        <TargetFrameworks>net8.0-windows;net48</TargetFrameworks>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DebugType>full</DebugType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <DebugType>pdbonly</DebugType>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Reference Include="SystemGroup.Data.Linq">
+            <HintPath>$(RahkaranBinPath)\SystemGroup.Data.Linq.dll</HintPath>
+        </Reference>
+        <Reference Include="SystemGroup.Framework">
+            <HintPath>$(RahkaranBinPath)\SystemGroup.Framework.dll</HintPath>
+        </Reference>
+        <Reference Include="SystemGroup.Framework.Concepts">
+            <HintPath>$(RahkaranBinPath)\SystemGroup.Framework.Concepts.dll</HintPath>
+        </Reference>
+        <Reference Include="SystemGroup.General.IPartyManagement.Common">
+            <HintPath>$(RahkaranBinPath)\SystemGroup.General.IPartyManagement.Common.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Service Include="{3259aa49-8aa1-44d3-9025-a0b520596a8c}" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Update="DataClasses.dbml">
+            <SubType>Designer</SubType>
+            <LastGenOutput>DataClasses.designer.cs</LastGenOutput>
+            <Generator>SgLinqToSQLGenerator</Generator>
+        </None>
+        <None Include="DataClasses.dbml.layout">
+            <DependentUpon>DataClasses.dbml</DependentUpon>
+        </None>
+        <None Update="Properties\Settings.settings">
+            <Generator>SettingsSingleFileGenerator</Generator>
+            <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+        </None>
+        <None Update="ComponentMessageContainer.cmc">
+            <Generator>SgComponentInitGenerator</Generator>
+            <LastGenOutput>ComponentMessageContainer.designer.cs</LastGenOutput>
+        </None>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Update="DataClasses.designer.cs">
+            <AutoGen>True</AutoGen>
+            <DesignTime>True</DesignTime>
+            <DependentUpon>DataClasses.dbml</DependentUpon>
+        </Compile>        
+        <Compile Update="Properties\Settings.Designer.cs">
+            <AutoGen>True</AutoGen>
+            <DesignTimeSharedInput>True</DesignTimeSharedInput>
+            <DependentUpon>Settings.settings</DependentUpon>
+        </Compile>
+        <Compile Update="ComponentMessageContainer.designer.cs">
+            <AutoGen>True</AutoGen>
+            <DesignTime>True</DesignTime>
+            <DependentUpon>ComponentMessageContainer.cmc</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+    <!--<ItemGroup>
+        <Compile Update="ComponentMessageContainer.designer.cs">
+            <AutoGen>True</AutoGen>
+            <DesignTime>True</DesignTime>
+            <DependentUpon>ComponentMessageContainer.cmc</DependentUpon>
+        </Compile>
+        <Compile Update="DataClasses.designer.cs">
+            <AutoGen>True</AutoGen>
+            <DesignTime>True</DesignTime>
+            <DependentUpon>DataClasses.dbml</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="ComponentMessageContainer.cmc">
+            <Generator>SgComponentInitGenerator</Generator>
+            <LastGenOutput>ComponentMessageContainer.designer.cs</LastGenOutput>
+        </None>
+        <None Update="DataClasses.dbml">
+            <Generator>SgLinqToSQLGenerator</Generator>
+            <LastGenOutput>DataClasses.designer.cs</LastGenOutput>
+            <SubType>Designer</SubType>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="DataClasses.dbml.layout">
+            <DependentUpon>DataClasses.dbml</DependentUpon>
+        </None>
+    </ItemGroup>-->
+</Project>

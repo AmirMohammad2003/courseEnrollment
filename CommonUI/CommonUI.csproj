@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <SccProjectName>SAK</SccProjectName>
+        <SccLocalPath>SAK</SccLocalPath>
+        <SccAuxPath>SAK</SccAuxPath>
+        <SccProvider>SAK</SccProvider>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <RootNamespace>SystemGroup.General.CourseEnrollment.CommonUI</RootNamespace>
+        <AssemblyName>SystemGroup.General.CourseEnrollment.CommonUI</AssemblyName>
+        <TargetFrameworks>net8.0-windows;net48</TargetFrameworks>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DebugType>full</DebugType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <DebugType>pdbonly</DebugType>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="Messages.Strings.Designer.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Labels.Strings.resx">
+        <Generator></Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="LogicalResources.Strings.resx">
+        <Generator></Generator>
+      </EmbeddedResource>
+      <EmbeddedResource Update="Messages.Strings.resx">
+        <Generator></Generator>
+      </EmbeddedResource>
+    </ItemGroup>
+
+</Project>

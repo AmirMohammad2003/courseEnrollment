@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SgComponent Name="SystemGroup.General.CourseEnrollment" xmlns="http://www.Systemgroup.net/Component/Initializer">
+  <Messages>
+      <Message Name="MajorSemesterCoursePlanUniquenessCheck" DefaultValue="_"/>
+  </Messages>
+
+  <ExceptionMappings>
+    <Mapping MessageName="MajorSemesterCoursePlanUniquenessCheck">
+      <Keywords>
+        <Keyword Name="UQ_SemesterCoursePlan_SemesterRef_MajorRef"/>
+        <Keyword Name="UNIQUE KEY"/>
+      </Keywords>
+    </Mapping>
+  </ExceptionMappings>
+</SgComponent>

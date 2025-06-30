@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="noidea" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="dbo.Course" Member="Courses">
+    <Type Name="Course">
+      <Column Name="CourseID" Member="ID" Modifier="Override" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Units" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Version" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="Course_Prerequisite" Member="Prerequisites" ThisKey="ID" OtherKey="CourseRef" Type="Prerequisite" />
+      <Association Name="Course_Prerequisite1" Member="Prerequisites1" ThisKey="ID" OtherKey="PrerequisiteCourseRef" Type="Prerequisite" />
+      <Association Name="Course_MajorCourse" Member="MajorCourses" ThisKey="ID" OtherKey="CourseRef" Type="MajorCourse" />
+      <Association Name="Course_SemesterCoursePlanItem" Member="SemesterCoursePlanItems" ThisKey="ID" OtherKey="CourseRef" Type="SemesterCoursePlanItem" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Major" Member="Majors">
+    <Type Name="Major">
+      <Column Name="MajorID" Member="ID" Modifier="Override" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Version" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Column Name="Units" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Major_PartyMajor" Member="PartyMajors" ThisKey="ID" OtherKey="MajorRef" Type="PartyMajor" />
+      <Association Name="Major_MajorCourse" Member="MajorCourses" ThisKey="ID" OtherKey="MajorRef" Type="MajorCourse" />
+      <Association Name="Major_SemesterCoursePlan" Member="SemesterCoursePlans" ThisKey="ID" OtherKey="MajorRef" Type="SemesterCoursePlan" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PartyMajor" Member="PartyMajors">
+    <Type Name="PartyMajor">
+      <Column Name="PartyMajorID" Member="ID" Modifier="Override" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MajorRef" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="PartyRef" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="GPA" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Version" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Column Name="ProfessorPartyRef" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="true" />
+      <Association Name="Major_PartyMajor" Member="Major" ThisKey="MajorRef" OtherKey="ID" Type="Major" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Prerequisite" Member="Prerequisites">
+    <Type Name="Prerequisite">
+      <Column Name="PrerequisiteID" Member="ID" Modifier="Override" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CourseRef" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="PrerequisiteCourseRef" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Version" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="Course_Prerequisite" Member="Course" ThisKey="CourseRef" OtherKey="ID" Type="Course" IsForeignKey="true" />
+      <Association Name="Course_Prerequisite1" Member="Course1" ThisKey="PrerequisiteCourseRef" OtherKey="ID" Type="Course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Semester" Member="Semesters">
+    <Type Name="Semester">
+      <Column Name="SemesterID" Member="ID" Modifier="Override" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EnrollmentStartTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EnrollmentEndTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Version" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Column Name="State" Type="SemesterStatus" DbType="int NOT NULL" CanBeNull="false" />
+      <Association Name="Semester_SemesterCoursePlan" Member="SemesterCoursePlans" ThisKey="ID" OtherKey="SemesterRef" Type="SemesterCoursePlan" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MajorCourse" Member="MajorCourses">
+    <Type Name="MajorCourse">
+      <Column Name="MajorCourseID" Member="ID" Modifier="Override" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MajorRef" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CourseRef" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Version" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="Course_MajorCourse" Member="Course" ThisKey="CourseRef" OtherKey="ID" Type="Course" IsForeignKey="true" />
+      <Association Name="Major_MajorCourse" Member="Major" ThisKey="MajorRef" OtherKey="ID" Type="Major" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SemesterCoursePlan" Member="SemesterCoursePlans">
+    <Type Name="SemesterCoursePlan">
+      <Column Name="SemesterCoursePlanID" Member="ID" Modifier="Override" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SemesterRef" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="MajorRef" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Version" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="SemesterCoursePlan_SemesterCoursePlanItem" Member="SemesterCoursePlanItems" ThisKey="ID" OtherKey="SemesterCoursePlanRef" Type="SemesterCoursePlanItem" />
+      <Association Name="SemesterCoursePlan_Enrollment" Member="Enrollments" ThisKey="ID" OtherKey="SemesterCoursePlanRef" Type="Enrollment" />
+      <Association Name="Major_SemesterCoursePlan" Member="Major" ThisKey="MajorRef" OtherKey="ID" Type="Major" IsForeignKey="true" />
+      <Association Name="Semester_SemesterCoursePlan" Member="Semester" ThisKey="SemesterRef" OtherKey="ID" Type="Semester" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SemesterCoursePlanItem" Member="SemesterCoursePlanItems">
+    <Type Name="SemesterCoursePlanItem">
+      <Column Name="SemesterCoursePlanItemID" Member="ID" Modifier="Override" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SemesterCoursePlanRef" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="PartyRef" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CourseRef" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Capacity" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Taken" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Version" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="SemesterCoursePlanItem_EnrollmentItem" Member="EnrollmentItems" ThisKey="ID" OtherKey="SemesterCoursePlanItemRef" Type="EnrollmentItem" />
+      <Association Name="Course_SemesterCoursePlanItem" Member="Course" ThisKey="CourseRef" OtherKey="ID" Type="Course" IsForeignKey="true" />
+      <Association Name="SemesterCoursePlan_SemesterCoursePlanItem" Member="SemesterCoursePlan" ThisKey="SemesterCoursePlanRef" OtherKey="ID" Type="SemesterCoursePlan" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EnrollmentItem" Member="EnrollmentItems">
+    <Type Name="EnrollmentItem">
+      <Column Name="EnrollmentItemID" Member="ID" Modifier="Override" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EnrollmentRef" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="SemesterCoursePlanItemRef" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Version" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="SemesterCoursePlanItem_EnrollmentItem" Member="SemesterCoursePlanItem" ThisKey="SemesterCoursePlanItemRef" OtherKey="ID" Type="SemesterCoursePlanItem" IsForeignKey="true" />
+      <Association Name="Enrollment_EnrollmentItem" Member="Enrollment" ThisKey="EnrollmentRef" OtherKey="ID" Type="Enrollment" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Enrollment" Member="Enrollments">
+    <Type Name="Enrollment">
+      <Column Name="EnrollmentID" Member="ID" Modifier="Override" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SemesterCoursePlanRef" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="PartyRef" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="GPA" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Version" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Column Name="State" Type="EnrollmentStatus" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Creator" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CreationDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="LastModifier" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="LastModificationDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Association Name="Enrollment_EnrollmentItem" Member="EnrollmentItems" ThisKey="ID" OtherKey="EnrollmentRef" Type="EnrollmentItem" />
+      <Association Name="SemesterCoursePlan_Enrollment" Member="SemesterCoursePlan" ThisKey="SemesterCoursePlanRef" OtherKey="ID" Type="SemesterCoursePlan" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

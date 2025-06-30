@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <SccProjectName>SAK</SccProjectName>
+        <SccLocalPath>SAK</SccLocalPath>
+        <SccAuxPath>SAK</SccAuxPath>
+        <SccProvider>SAK</SccProvider>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <AssemblyName>SystemGroup.General.CourseEnrollment.Business</AssemblyName>
+        <RootNamespace>SystemGroup.General.CourseEnrollment.Business</RootNamespace>
+        <TargetFrameworks>net8.0-windows;net48</TargetFrameworks>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DebugType>full</DebugType>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <DebugType>pdbonly</DebugType>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Reference Include="SystemGroup.Data.Linq">
+            <HintPath>$(RahkaranBinPath)\SystemGroup.Data.Linq.dll</HintPath>
+        </Reference>
+        <Reference Include="SystemGroup.Framework">
+            <HintPath>$(RahkaranBinPath)\SystemGroup.Framework.dll</HintPath>
+        </Reference>
+        <Reference Include="SystemGroup.Framework.Concepts">
+            <HintPath>$(RahkaranBinPath)\SystemGroup.Framework.Concepts.dll</HintPath>
+        </Reference>
+        <Reference Include="SystemGroup.General.CourseEnrollment.Common">
+            <HintPath>$(RahkaranBinPath)\SystemGroup.General.CourseEnrollment.Common.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+</Project>
