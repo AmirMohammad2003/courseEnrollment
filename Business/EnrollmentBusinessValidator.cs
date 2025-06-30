@@ -13,17 +13,21 @@ namespace SystemGroup.General.CourseEnrollment.Business
 {
     public class EnrollmentBusinessValidator : BusinessValidator<Enrollment>
     {
+
         public override void Validate(Enrollment record, EntityActionType action)
         {
             base.Validate(record, action);
 
-            var semester = record.SemesterCoursePlan.Semester;
+            record.Load<SemesterCoursePlan>(i => ((Enrollment)i).SemesterCoursePlan);
+            var coursePlan = record.SemesterCoursePlan;
+            coursePlan.Load<Semester>(i => ((SemesterCoursePlan)i).Semester);
+            var semester = coursePlan.Semester;
 
             if (semester.State != SemesterStatus.Registering || 
                 semester.EnrollmentStartTime > DateTime.Today || 
                 semester.EnrollmentEndTime < DateTime.Today)
             {
-                throw this.CreateException("");
+                throw this.CreateException("ثبت نام ترم فقط در زمان مشخص شده مجاز است.");
             }
 
         }

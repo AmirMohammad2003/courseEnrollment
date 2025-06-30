@@ -22,6 +22,9 @@ namespace SystemGroup.General.CourseEnrollment.Common
     [DataNature(DataNature.BusinessTransaction)]
     partial class Enrollment : Entity, ITrackedEntity
     {
+        #region Properties 
+        #endregion
+
         #region Methods
 
         public override void SetDefaultValues()
