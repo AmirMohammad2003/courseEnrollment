@@ -2146,6 +2146,8 @@ namespace SystemGroup.General.CourseEnrollment.Common
 		
 		private System.Data.Linq.Binary _Version;
 		
+		private System.Nullable<float> _Score;
+		
 		private EntityRef<SemesterCoursePlanItem> _SemesterCoursePlanItem;
 		
 		private EntityRef<Enrollment> _Enrollment;
@@ -2162,6 +2164,8 @@ namespace SystemGroup.General.CourseEnrollment.Common
     partial void OnSemesterCoursePlanItemRefChanged();
     partial void OnVersionChanging(System.Data.Linq.Binary value);
     partial void OnVersionChanged();
+    partial void OnScoreChanging(System.Nullable<float> value);
+    partial void OnScoreChanged();
     #endregion
 		
 		public EnrollmentItem()
@@ -2255,6 +2259,26 @@ namespace SystemGroup.General.CourseEnrollment.Common
 					this._Version = value;
 					this.SendPropertyChanged("Version");
 					this.OnVersionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Score", DbType="float NULL")]
+		public System.Nullable<float> Score
+		{
+			get
+			{
+				return this._Score;
+			}
+			set
+			{
+				if ((this._Score != value))
+				{
+					this.OnScoreChanging(value);
+					this.SendPropertyChanging();
+					this._Score = value;
+					this.SendPropertyChanged("Score");
+					this.OnScoreChanged();
 				}
 			}
 		}

@@ -27,7 +27,7 @@
                                 <sg:sgtablecell>
                                     <sg:sgselector runat="server" id="sltSemesterCoursePlan"
                                         componentname="SystemGroup.General.CourseEnrollment"
-                                        entityname="SemesterCoursePlan" viewname="AllSemesterCoursePlan"
+                                        entityname="SemesterCoursePlan" viewname="AllUserEligibleSemesterCoursePlan"
                                         OnClientSelectedIndexChanged="sltCoursePlan_selectedIndexChanged"
                                         OnClientSelectedIndexChanging="sltCoursePlan_selectedIndexChanging">
                                     </sg:sgselector>

@@ -6,6 +6,7 @@ If Object_ID('dbo.EnrollmentItem') Is Null
     [EnrollmentItemID] [bigint] NOT NULL,
 	[EnrollmentRef] [bigint] NOT NULL,
     [SemesterCoursePlanItemRef] [bigint] NOT NULL,
+    [Score] [float] NULL,
     [Version] [timestamp] NOT NULL
     ) ON [PRIMARY]
 GO
@@ -46,7 +47,7 @@ If not Exists (select 1 from sys.objects where name = 'FK_EnrollmentItem_Enrollm
     REFERENCES [dbo].[Enrollment] ([EnrollmentID])
 GO
 
-If not Exists (select 1 from sys.objects where name = 'FK_EnrollmentItem_SemesterCoursePlaItemRef')
+If not Exists (select 1 from sys.objects where name = 'FK_EnrollmentItem_SemesterCoursePlanItemRef')
     ALTER TABLE [dbo].[EnrollmentItem]  ADD  CONSTRAINT [FK_EnrollmentItem_SemesterCoursePlanItemRef] FOREIGN KEY(SemesterCoursePlanItemRef)
     REFERENCES [dbo].[SemesterCoursePlanItem] ([SemesterCoursePlanItemID])
 GO

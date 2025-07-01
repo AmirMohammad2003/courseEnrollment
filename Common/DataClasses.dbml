@@ -98,6 +98,7 @@
       <Column Name="EnrollmentRef" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
       <Column Name="SemesterCoursePlanItemRef" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
       <Column Name="Version" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Column Name="Score" Type="System.Single" DbType="float NULL" CanBeNull="true" UpdateCheck="Always" />
       <Association Name="SemesterCoursePlanItem_EnrollmentItem" Member="SemesterCoursePlanItem" ThisKey="SemesterCoursePlanItemRef" OtherKey="ID" Type="SemesterCoursePlanItem" IsForeignKey="true" />
       <Association Name="Enrollment_EnrollmentItem" Member="Enrollment" ThisKey="EnrollmentRef" OtherKey="ID" Type="Enrollment" IsForeignKey="true" />
     </Type>

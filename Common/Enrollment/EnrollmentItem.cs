@@ -34,6 +34,7 @@ namespace SystemGroup.General.CourseEnrollment.Common
         {
             base.GetColumns(columns);
 
+            columns.Add(new NumericColumnInfo("Score", "نمره", NumericType.FloatingPoint));
             columns.Add(new ReferenceColumnInfo("EnrollmentRef", "_"));
             columns.Add(new ReferenceColumnInfo("SemesterCoursePlanItemRef", "_"));
         }
