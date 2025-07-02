@@ -32,12 +32,10 @@ namespace SystemGroup.General.CourseEnrollment.Business
 
         public virtual IQueryable<Course> FetchAllMajorCourses(long id)
         {
-            var majorCourses = MajorBusiness
-                .FetchByID(id, LoadOptions.With<Major>(i => i.MajorCourses))
-                .FirstOrDefault()?.MajorCourses.Select(i => i.CourseRef);
+            var majorCourses = MajorBusiness.FetchDetail<MajorCourse>().Select(i => i.CourseRef);
 
             return from course in FetchAll()
-                   where majorCourses.Contains(course.ID)
+                   join mc in majorCourses on course.ID equals mc
                    select course;
         }
     }

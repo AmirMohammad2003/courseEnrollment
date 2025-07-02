@@ -41,8 +41,10 @@ namespace SystemGroup.General.CourseEnrollment.Business
                 .FetchByFilter(i => i.ProfessorPartyRef == CurrentUserInfo.PartyRef)
                 .Select(i => i.PartyRef);
 
-            return FetchByFilter(i => students.Contains(i.PartyRef))
-                .Where(i => i.State != EnrollmentStatus.Registering);
+            return from enrollment in FetchAll()
+                   join s in students on enrollment.PartyRef equals s
+                   where enrollment.State != EnrollmentStatus.Registering
+                   select enrollment;
         }
 
         public virtual IQueryable<Enrollment> FetchAllCurrentUserStudentNotApprovedEnrollments()
