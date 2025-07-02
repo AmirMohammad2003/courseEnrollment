@@ -32,7 +32,7 @@
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
                                     <sg:sgrequiredfieldvalidator runat="server" controltovalidate="sltSemester" 
-                                        errormessage="تعداد واحد ها را وارد کنید."></sg:sgrequiredfieldvalidator>
+                                        errormessage="ترم را وارد کنید."></sg:sgrequiredfieldvalidator>
                                 </sg:sgtablecell>
                             </sg:sgtablerow>
                             <sg:sgtablerow>
@@ -60,12 +60,18 @@
                                 <EditItemTemplate>
                                     <sg:SgSelector runat="server" ID="sltCourse"
                                         ComponentName="SystemGroup.General.CourseEnrollment"
-                                        EntityName="Course" ViewName="AllCourse" 
+                                        EntityName="Course" ViewName="AllMajorCourses" 
                                         CbSelectedID="{binding CourseRef}" 
-                                        OnClientSelectedIndexChanged="sltCourse_selectedIndexChanged">
+                                        OnClientSelectedIndexChanged="sltCourse_selectedIndexChanged"
+                                        OnClientItemsRequesting="sltCourse_itemsRequesting"
+                                        OnItemsRequested="sltCourse_ItemsRequested">
                                         <Properties>
                                             <sg:SgSelectorProperty Name="Name" ClientSide="true"/>
                                         </Properties>
+                                        <ViewParameters>
+                                            <sg:SgViewParameter Name="id" />
+                                        </ViewParameters>
+
                                     </sg:SgSelector>
                                     <sg:SgRequiredFieldValidator runat="server" ControlToValidate="sltCourse"
                                         errormessage="درس را انتخاب کنید." ValidationGroup="vgGrid"/>
@@ -74,8 +80,8 @@
                             <sg:SgSelectorGridColumn PropertyName="PartyName" HeaderText="استاد">
                                 <EditItemTemplate>
                                     <sg:SgSelector runat="server" ID="sltParty"
-                                        ComponentName="SystemGroup.General.PartyManagement"
-                                        EntityName="Party" ViewName="AllParties" 
+                                        ComponentName="SystemGroup.General.IPartyManagement"
+                                        EntityName="IParty" ViewName="AllProfessorParties" 
                                         CbSelectedID="{binding PartyRef}"
                                         OnClientSelectedIndexChanged="sltParty_selectedIndexChanged">
                                         <Properties>
@@ -83,7 +89,7 @@
                                         </Properties>
                                     </sg:SgSelector>
                                     <sg:SgRequiredFieldValidator runat="server" ControlToValidate="sltCourse"
-                                        errormessage="درس را انتخاب کنید." ValidationGroup="vgGrid"/>
+                                        errormessage="استاد را انتخاب کنید." ValidationGroup="vgGrid"/>
                                 </EditItemTemplate>
                             </sg:SgSelectorGridColumn>
                             <sg:SgNumericGridColumn PropertyName="Capacity" HeaderText="ظرفیت">

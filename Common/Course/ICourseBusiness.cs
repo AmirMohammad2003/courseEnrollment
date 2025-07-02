@@ -14,5 +14,8 @@ namespace SystemGroup.General.CourseEnrollment.Common
     {
         [EntityView("AllCourse", "لیست دروس", typeof(CourseProjection), "Name", IsDefaultView = true)]
         new IQueryable<Course> FetchAll();
+
+        [EntityView("AllMajorCourses", "_", typeof(CourseProjection), "Name", ShowInViewList = false)]
+        IQueryable<Course> FetchAllMajorCourses(long id);
     }
 }

@@ -22,7 +22,7 @@ namespace SystemGroup.General.CourseEnrollment.Business
     public class EnrollmentBusiness : BusinessBase<Enrollment>, IEnrollmentBusiness
     {
         [ServiceDependency]
-        private IPartyMajorBusiness PartyMajorBusiness => ServiceFactory.Create<IPartyMajorBusiness>();
+        public virtual IPartyMajorBusiness PartyMajorBusiness { get; set; }
 
         [SubscribeTo(typeof(IHostService), "HostStarted")]
         public void OnHostStarted(object sender, EventArgs e)

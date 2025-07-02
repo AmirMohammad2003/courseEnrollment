@@ -6,6 +6,7 @@ using SystemGroup.Framework.Business;
 using SystemGroup.Framework.Common;
 using SystemGroup.Framework.Eventing;
 using SystemGroup.Framework.Exceptions;
+using SystemGroup.Framework.Host;
 using SystemGroup.Framework.Localization;
 using SystemGroup.Framework.Service;
 using SystemGroup.Framework.Service.Attributes;
@@ -17,5 +18,10 @@ namespace SystemGroup.General.CourseEnrollment.Business
     [Service]
     public class PartyMajorBusiness : BusinessBase<PartyMajor>, IPartyMajorBusiness
     {
+        [SubscribeTo(typeof(IHostService), "HostStarted")]
+        public void OnHostStarted(object sender, EventArgs e)
+        {
+            BusinessValidationProvider.RegisterValidator<PartyMajor>(new PartyMajorValidator());
+        }
     }
 }

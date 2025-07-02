@@ -31,6 +31,8 @@ namespace SystemGroup.General.CourseEnrollment.Common
         {
             base.SetDefaultValues();
 
+            this.State = EnrollmentStatus.Registering;
+
             var auth = ServiceFactory.GetAuthenticationService();
             var user = auth.GetCurrentUser() ?? throw new SgException("You should be logged in to use this service.");
             if (user.PartyRef == null)

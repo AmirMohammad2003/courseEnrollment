@@ -16,7 +16,6 @@ namespace SystemGroup.General.CourseEnrollment.Common
 {
     [Serializable]
     [DetailOf(typeof(Enrollment), "EnrollmentRef")]
-    [AssociatedWith(typeof(SemesterCoursePlanItem), "SemesterCoursePlanItemRef", AssociationType.ManyToOne)]
     partial class EnrollmentItem : Entity
     {
         #region Properties 

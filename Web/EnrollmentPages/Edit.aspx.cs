@@ -105,9 +105,11 @@ namespace SystemGroup.General.CourseEnrollment.Web.EnrollmentPages
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+
             var ds = FindDataSource(".EnrollmentItems");
             ds.OnClientInsertedEntity = "ds_insertedEntity";
             ds.OnClientRemovedEntity = "ds_removedEntity";
+
             SgGrid grd = FindControl("grdCourses") as SgGrid;
             grd.MenuVisibility = SgGridMenuVisibility.Visible;
             grd.ToolBarVisibility = SgGridToolBarVisibility.Visible;

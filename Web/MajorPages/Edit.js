@@ -22,18 +22,3 @@ function sltCourse_itemsRequesting(sender, args) {
     let grid = $find("grdCourses");
     IgnoreIDs(grid, args);
 }
-
-function sltParty_selectedIndexChanged(sender, args) {
-    let grid = $find("grdParties");
-    let tempEntity = grid.get_tempEntity();
-    if (tempEntity != null) {
-        Sys.Observer.setValue(tempEntity, "PartyName", sender.getSelectedDataProperty("FullName"));
-        Sys.Observer.setValue(tempEntity, "PartyNationalID", sender.getSelectedDataProperty("NationalID"));
-        Sys.Observer.setValue(tempEntity, "PartyNumber", sender.getSelectedDataProperty("Number"));
-    }
-}
-
-function sltParty_itemsRequesting(sender, args) {
-    let grid = $find("grdParties");
-    IgnoreIDs(grid, args);
-}

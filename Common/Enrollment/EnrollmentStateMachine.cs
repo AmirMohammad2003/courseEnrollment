@@ -15,9 +15,11 @@ namespace SystemGroup.General.CourseEnrollment.Common
             var registering = new State(EnrollmentStatus.Registering, "Registering", "Labels_Registering");
             var waitingForApproval = new State(EnrollmentStatus.WaitingForApproval, "WaitingForApproval", "Labels_WaitingForApproval");
             var approved = new State(EnrollmentStatus.Approved, "Approved", "Labels_Approved");
+
             States.Add(registering);
             States.Add(waitingForApproval);
             States.Add(approved);
+
             Transitions.Add(new ManualTransition(registering, waitingForApproval, "Labels_RegisteringToWaitingForApproval",
                 securityKey: "CourseEnrollment.Enrollment.Edit | CourseEnrollment.Enrollment.New"));
             Transitions.Add(new ManualTransition(waitingForApproval, approved, "Labels_WaitingForApprovalToApproved",
@@ -34,11 +36,6 @@ namespace SystemGroup.General.CourseEnrollment.Common
         protected override EnrollmentStatus GetCurrentStateCodeAsEnum(Enrollment record)
         {
             return record.State;
-        }
-
-        protected override StateMachine<Enrollment>.State GetInitialState(Enrollment record)
-        {
-            return States[EnrollmentStatus.Registering];
         }
     }
 }

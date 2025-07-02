@@ -64,6 +64,14 @@ namespace SystemGroup.General.CourseEnrollment.Web.SemesterCoursePlanPages
             base.OnEntityLoaded(sender, e);
 
             SemesterCoursePlanItem.FillExtraProperties(CurrentEntity.SemesterCoursePlanItems);
+            SetUIProperties();
+        }
+
+        protected override void OnEntitySaved(object sender, EntitySavedEventArgs e)
+        {
+            base.OnEntitySaved(sender, e);
+
+            SetUIProperties();
         }
 
         protected override void OnEditorBinding(EditorBindingEventArgs<SemesterCoursePlan> e)
@@ -74,6 +82,46 @@ namespace SystemGroup.General.CourseEnrollment.Web.SemesterCoursePlanPages
             e.Context.BindValueTypeProperty(coursePlan => coursePlan.MajorRef).To(sltMajor);
         }
 
+        protected void sltCourse_ItemsRequested(object sender, Telerik.Web.UI.RadComboBoxItemsRequestedEventArgs  e)
+        {
+            var slt = sender as SgSelector;
+
+            slt.ViewParameters[0].Value = Convert.ToInt32(e.Context["id"]);
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            var ds = FindDataSource(".SemesterCoursePlanItems");
+            ds.OnClientInsertedEntity = "ds_insertedEntity";
+            ds.OnClientRemovedEntity = "ds_removedEntity";
+        }
+
+        private void SetGridEnabled(bool enabled)
+        {
+            grdCourses.AllowDelete =
+            grdCourses.AllowInsert =
+            grdCourses.AllowEdit = enabled;
+
+            grdCourses.Rebuild();
+        }
+
+        private void SetUIProperties()
+        {
+            var ds = FindDataSource(".SemesterCoursePlanItems");
+            int count = ds.Entities.Count;
+
+            if (sltMajor.SelectedID != null || CurrentEntity.MajorRef != 0)
+            {
+                SetGridEnabled(true);
+                sltMajor.Enabled = count == 0;
+            } else
+            {
+                SetGridEnabled(false);
+                sltMajor.Enabled = true;
+            }
+        }
         #endregion
     }
 }

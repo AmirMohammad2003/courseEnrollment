@@ -48,6 +48,7 @@
         <None Include="DataClasses.dbml.layout">
             <DependentUpon>DataClasses.dbml</DependentUpon>
         </None>
+        <ProjectReference Include="..\..\NewComponents\PartyManagement\Common\Common.csproj" />
         <None Update="Properties\Settings.settings">
             <Generator>SettingsSingleFileGenerator</Generator>
             <LastGenOutput>Settings.Designer.cs</LastGenOutput>

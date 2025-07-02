@@ -18,7 +18,7 @@ namespace SystemGroup.General.CourseEnrollment.Common
         [EntityView("AllUserEligibleSemesterCoursePlan", "برنامه های تحصیلی مجاز برای دانشجو", typeof(SemesterCoursePlanProjection), "SemesterName", ShowInViewList = false)]
         IQueryable<SemesterCoursePlan> FetchAllUserEligibleSemesterCoursePlan();
 
-        [EntityView("AllSemesterCoursePlanItems", "دروس ثبت نامی", typeof(SemesterCoursePlanItemProjection), "CourseName", ShowInViewList = false)]
+        [EntityView("AllSemesterCoursePlanItems", "دروس ثبت نامی", typeof(SemesterCoursePlanItemProjection), "CourseName", ShowInViewList = false, SearchInProjection = true)]
         IQueryable<SemesterCoursePlanItem> FetchAllSemesterCoursePlanItems(long id);
 
     }

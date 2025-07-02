@@ -39,8 +39,7 @@ namespace SystemGroup.General.CourseEnrollment.Business
 
         public virtual IQueryable<SemesterCoursePlanItem> FetchAllSemesterCoursePlanItems(long id)
         {
-            return FetchByID(id, LoadOptions.With<SemesterCoursePlan>(i => i.SemesterCoursePlanItems))
-                .First().SemesterCoursePlanItems.AsQueryable();
+            return FetchDetail<SemesterCoursePlanItem>().Where(i => i.SemesterCoursePlanRef == id);
         }
 
     }

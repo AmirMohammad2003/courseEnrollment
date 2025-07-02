@@ -78,6 +78,33 @@ namespace SystemGroup.General.CourseEnrollment.Web.CoursePages
         protected global::SystemGroup.Web.UI.Controls.SgNumericTextBox txtUnits;
 
         /// <summary>
+        /// tbsTab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::SystemGroup.Web.UI.Controls.SgTabStrip tbsTab;
+
+        /// <summary>
+        /// mpgMultiPage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::SystemGroup.Web.UI.Controls.SgMultiPage mpgMultiPage;
+
+        /// <summary>
+        /// rpvGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPageView rpvGrid;
+
+        /// <summary>
         /// grdPrerequisites control.
         /// </summary>
         /// <remarks>

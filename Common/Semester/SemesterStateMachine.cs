@@ -14,9 +14,11 @@ namespace SystemGroup.General.CourseEnrollment.Common
             var registering = new State(SemesterStatus.Registering, "Registering", "Labels_Registering");
             var onGoing = new State(SemesterStatus.OnGoing, "OnGoing", "Labels_OnGoing");
             var finished = new State(SemesterStatus.Finished, "Finished", "Labels_Finished");
+
             States.Add(registering);
             States.Add(onGoing);
             States.Add(finished);
+
             Transitions.Add(new ManualTransition(registering, onGoing, "Labels_RegisteringToOnGoing"));
             Transitions.Add(new ManualTransition(onGoing, finished, "Labels_OnGoingToFinished"));
         }

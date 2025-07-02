@@ -34,6 +34,18 @@
         <Reference Include="SystemGroup.General.CourseEnrollment.Common">
             <HintPath>$(RahkaranBinPath)\SystemGroup.General.CourseEnrollment.Common.dll</HintPath>
         </Reference>
+        <Reference Include="SystemGroup.General.PartyManagement.Common">
+            <HintPath>$(RahkaranBinPath)\SystemGroup.General.PartyManagement.Common.dll</HintPath>
+        </Reference>
+        <Reference Include="SystemGroup.General.IPartyManagement.Common">
+            <HintPath>$(RahkaranBinPath)\SystemGroup.General.IPartyManagement.Common.dll</HintPath>
+        </Reference>
+        <Reference Include="SystemGroup.General.Grouping.Common">
+            <HintPath>$(RahkaranBinPath)\SystemGroup.General.Grouping.Common.dll</HintPath>
+        </Reference>
+        <Reference Include="SystemGroup.Security.Common">
+          <HintPath>..\..\..\..\Bin\net8.0-windows\SystemGroup.Security.Common.dll</HintPath>
+        </Reference>
     </ItemGroup>
 
 </Project>

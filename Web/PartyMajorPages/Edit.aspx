@@ -22,8 +22,8 @@
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
                                     <sg:sgselector runat="server" id="sltParty"
-                                        componentname="SystemGroup.General.PartyManagement"
-                                        entityname="Party" viewname="AllParties">
+                                        componentname="SystemGroup.General.IPartyManagement"
+                                        entityname="IParty" viewname="AllStudentParties">
                                     </sg:sgselector>
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
@@ -54,8 +54,8 @@
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
                                     <sg:sgselector runat="server" id="sltProfessorParty"
-                                        componentname="SystemGroup.General.PartyManagement"
-                                        entityname="Party" viewname="AllParties" >
+                                        componentname="SystemGroup.General.IPartyManagement"
+                                        entityname="IParty" viewname="AllProfessorParties" >
                                     </sg:sgselector>
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
