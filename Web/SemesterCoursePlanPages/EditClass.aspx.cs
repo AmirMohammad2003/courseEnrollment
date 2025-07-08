@@ -21,6 +21,8 @@ namespace SystemGroup.General.CourseEnrollment.Web.SemesterCoursePlanPages
 
         private SgEntityDataSource<EnrollmentItem> dsParties;
 
+        private SemesterCoursePlanItem semesterCoursePlanItem;
+
         static public IEnrollmentBusiness EnrollmentBusiness { get; } = ServiceFactory.Create<IEnrollmentBusiness>();
 
         private new long ID;
@@ -35,6 +37,12 @@ namespace SystemGroup.General.CourseEnrollment.Web.SemesterCoursePlanPages
 
             string idText = Request.QueryString["id"] ?? throw this.CreateException("Bad Request");
             ID = Convert.ToInt64(idText); 
+
+            semesterCoursePlanItem = ServiceFactory.Create<ISemesterCoursePlanBusiness>()
+                .FetchDetail<SemesterCoursePlanItem>()
+                .Where(i => i.ID == ID).First();
+
+            SemesterCoursePlanItem.FillExtraProperties([semesterCoursePlanItem]);
 
             dsParties = new()
             {
@@ -58,6 +66,7 @@ namespace SystemGroup.General.CourseEnrollment.Web.SemesterCoursePlanPages
 
             if (!IsPostBack)
             {
+                Title = this.Translate("Labels_Scoring") + " " + semesterCoursePlanItem.CourseName;
                 InitializeRecords();
             }
         }
@@ -66,7 +75,7 @@ namespace SystemGroup.General.CourseEnrollment.Web.SemesterCoursePlanPages
         {
             var parties = EnrollmentBusiness
                 .FetchDetail<EnrollmentItem>(LoadOptions.With<EnrollmentItem>(i => i.Enrollment))
-                .Where(i => i.SemesterCoursePlanItemRef == ID)
+                .Where(i => i.SemesterCoursePlanItemRef == ID && i.Enrollment.State == EnrollmentStatus.Approved)
                 .ToList();
 
             EnrollmentItem.FillPartyName(parties);
@@ -112,10 +121,8 @@ namespace SystemGroup.General.CourseEnrollment.Web.SemesterCoursePlanPages
                             {
                                 changed = true;
                                 item.Score = newItem.Score;
-                                continue;
                             }
-
-                            if (!rangeViolation)
+                            else
                             {
                                 rangeViolation = true;
                             }

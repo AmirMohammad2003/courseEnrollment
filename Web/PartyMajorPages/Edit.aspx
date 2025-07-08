@@ -34,7 +34,7 @@
                             </sg:sgtablerow>
                             <sg:sgtablerow>
                                 <sg:sgtablecell>
-                                    <sg:sgfieldlabel runat="server" text="Labels_Major" required="true"></sg:sgfieldlabel>
+                                    <sg:sgfieldlabel runat="server" textkey="Labels_Major" required="true"></sg:sgfieldlabel>
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
                                     <sg:sgselector runat="server" id="sltMajor"
@@ -50,7 +50,7 @@
                             </sg:sgtablerow>
                             <sg:sgtablerow>
                                 <sg:sgtablecell>
-                                    <sg:sgfieldlabel runat="server" text="Labels_AssignedProfessor"></sg:sgfieldlabel>
+                                    <sg:sgfieldlabel runat="server" textkey="Labels_AssignedProfessor"></sg:sgfieldlabel>
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
                                     <sg:sgselector runat="server" id="sltProfessorParty"
