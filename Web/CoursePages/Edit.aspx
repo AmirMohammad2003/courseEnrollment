@@ -1,6 +1,6 @@
 ﻿<%@ page language="C#" autoeventwireup="true" codebehind="Edit.aspx.cs"
     inherits="SystemGroup.General.CourseEnrollment.Web.CoursePages.Edit"
-    title="درس" %>
+    title="Labels_Course" %>
 
 <!DOCTYPE html>
 
@@ -22,32 +22,34 @@
                         <sg:sgfieldlayout runat="server">
                             <sg:sgtablerow>
                                 <sg:sgtablecell>
-                                    <sg:sgfieldlabel runat="server" text="نام درس" required="true"></sg:sgfieldlabel>
+                                    <sg:sgfieldlabel runat="server" textkey="Labels_Name" required="true"></sg:sgfieldlabel>
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
                                     <sg:sgtextbox runat="server" id="txtName" width="135px"></sg:sgtextbox>
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
-                                    <sg:sgrequiredfieldvalidator runat="server" controltovalidate="txtName" errormessage="نام درس را وارد کنید."></sg:sgrequiredfieldvalidator>
+                                    <sg:sgrequiredfieldvalidator runat="server" controltovalidate="txtName"
+                                        errormessagekey="Messages_EnterCourseName"></sg:sgrequiredfieldvalidator>
                                 </sg:sgtablecell>
                             </sg:sgtablerow>
                             <sg:sgtablerow>
                                 <sg:sgtablecell>
-                                    <sg:sgfieldlabel runat="server" text="تعداد واحد" required="true"></sg:sgfieldlabel>
+                                    <sg:sgfieldlabel runat="server" textkey="Labels_Units" required="true"></sg:sgfieldlabel>
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
                                     <sg:sgnumerictextbox runat="server" id="txtUnits" value="1" minvalue="0" maxvalue="99"
                                         numberformat-decimaldigits="0" width="135px" datatype="System.Int" />
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
-                                    <sg:sgrequiredfieldvalidator runat="server" controltovalidate="txtUnits" errormessage="تعداد واحد ها را وارد کنید."></sg:sgrequiredfieldvalidator>
+                                    <sg:sgrequiredfieldvalidator runat="server" controltovalidate="txtUnits"
+                                        errormessagekey="Messages_EnterUnits"></sg:sgrequiredfieldvalidator>
                                 </sg:sgtablecell>
                             </sg:sgtablerow>
                         </sg:sgfieldlayout>
                     </sg:sgfieldset>
                     <sg:sgtabstrip id="tbsTab" runat="server" multipageid="mpgMultiPage">
                         <tabs>
-                            <sg:sgtab runat="server" text="پیشنیاز ها" pageviewid="rpvGrid" />
+                            <sg:sgtab runat="server" textkey="Labels_Prerequisites" pageviewid="rpvGrid" />
                         </tabs>
                     </sg:sgtabstrip>
                     <sg:sgmultipage id="mpgMultiPage" runat="server">
@@ -57,7 +59,7 @@
                                 allowedit="true" allowdelete="true" allowinsert="true"
                                 datasourceid=".Prerequisites" validationgroup="vgGrid">
                                 <columns>
-                                    <sg:sgselectorgridcolumn propertyname="CourseName" headertext="پیشنیاز">
+                                    <sg:sgselectorgridcolumn propertyname="CourseName" headertext="Labels_Prerequisite">
                                         <edititemtemplate>
                                             <sg:sgselector runat="server" id="sltCourse"
                                                 componentname="SystemGroup.General.CourseEnrollment"
@@ -71,7 +73,7 @@
                                                 </properties>
                                             </sg:sgselector>
                                             <sg:sgrequiredfieldvalidator runat="server" controltovalidate="sltCourse"
-                                                errormessage="پیشنیاز را انتخاب کنید." validationgroup="vgGrid" />
+                                                errormessage="Messages_ChoosePrerequisite" validationgroup="vgGrid" />
                                         </edititemtemplate>
                                     </sg:sgselectorgridcolumn>
                                 </columns>

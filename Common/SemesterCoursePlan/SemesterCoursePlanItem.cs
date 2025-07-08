@@ -38,8 +38,8 @@ namespace SystemGroup.General.CourseEnrollment.Common
 
         public override string GetEntityName()
         {
-            return "درس جاری ترم"; 
-        }
+            return "Labels_SemesterCoursePlanItem"; 
+        } 
 
         public override void GetColumns(List<ColumnInfo> columns)
         {
@@ -48,8 +48,8 @@ namespace SystemGroup.General.CourseEnrollment.Common
             columns.Add(new ReferenceColumnInfo("SemesterCoursePlanRef", "_"));
             columns.Add(new ReferenceColumnInfo("PartyRef", "_"));
             columns.Add(new ReferenceColumnInfo("CourseRef", "_"));
-            columns.Add(new NumericColumnInfo("Capacity", "ظرفیت", NumericType.Integer));
-            columns.Add(new NumericColumnInfo("Taken", "اخذ شده", NumericType.Integer));
+            columns.Add(new NumericColumnInfo("Capacity", "Labels_Capacity", NumericType.Integer));
+            columns.Add(new NumericColumnInfo("Taken", "Labels_Taken", NumericType.Integer));
         }
 
         public static void FillExtraProperties(IList<SemesterCoursePlanItem> list)

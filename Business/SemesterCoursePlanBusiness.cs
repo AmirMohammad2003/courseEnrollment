@@ -7,6 +7,7 @@ using SystemGroup.Framework.Business;
 using SystemGroup.Framework.Common;
 using SystemGroup.Framework.Eventing;
 using SystemGroup.Framework.Exceptions;
+using SystemGroup.Framework.Host;
 using SystemGroup.Framework.Localization;
 using SystemGroup.Framework.Service;
 using SystemGroup.Framework.Service.Attributes;
@@ -20,6 +21,12 @@ namespace SystemGroup.General.CourseEnrollment.Business
     {
         [ServiceDependency]
         public virtual IPartyMajorBusiness PartyMajorBusiness { get; set; }
+
+        [SubscribeTo(typeof(IHostService), "HostStarted")]
+        public void OnHostStarted(object sender, EventArgs e)
+        {
+            BusinessValidationProvider.RegisterValidator<SemesterCoursePlan>(new SemesterCoursePlanValidator());
+        }
 
         public virtual IQueryable<SemesterCoursePlan> FetchAllUserEligibleSemesterCoursePlan()
         {
@@ -42,5 +49,9 @@ namespace SystemGroup.General.CourseEnrollment.Business
             return FetchDetail<SemesterCoursePlanItem>().Where(i => i.SemesterCoursePlanRef == id);
         }
 
+        public virtual IQueryable<SemesterCoursePlanItem> FetchAllProfessorSemesterCoursePlanItems()
+        {
+            return FetchDetail<SemesterCoursePlanItem>().Where(i => i.PartyRef == CurrentUserInfo.PartyRef);
+        }
     }
 }

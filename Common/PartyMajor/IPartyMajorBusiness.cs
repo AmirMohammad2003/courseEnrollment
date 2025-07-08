@@ -12,7 +12,7 @@ namespace SystemGroup.General.CourseEnrollment.Common
     [ServiceInterface]
     public interface IPartyMajorBusiness : IBusinessBase<PartyMajor>
     {
-        [EntityView("AllPartyMajor", "دانشجویان ثبت نامی", typeof(PartyMajorProjection), "PartyName", IsDefaultView = true)]
+        [EntityView("AllPartyMajor", "Labels_PartyMajors", typeof(PartyMajorProjection), "PartyName", IsDefaultView = true, SearchInProjection = true)]
         new IQueryable<PartyMajor> FetchAll();
     }
 }

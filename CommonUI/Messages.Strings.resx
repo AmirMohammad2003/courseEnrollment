@@ -120,4 +120,127 @@
   <data name="MajorSemesterCoursePlanUniquenessCheck" xml:space="preserve">
     <value>برای هر ترم و رشته فقط یک برنامه تحصیلی می توان تعریف کرد.</value>
   </data>
+  <data name="StartDateAfterEndDate" xml:space="preserve">
+    <value>زمان شروع ترم نمی تواند بعد از پایان ترم باشد.</value>
+  </data>
+  <data name="EnrollmentStartTimeAfterEndTime" xml:space="preserve">
+    <value>زمان شروع ثبت نام نمی تواند بعد از پایان ثبت نام باشد.</value>
+  </data>
+  <data name="EnrollmentAfterStartDatet" xml:space="preserve">
+    <value>زمان شروع ثبت نام نمی تواند بعد از شروع ترم باشد.</value>
+  </data>
+  <data name="SemesterNameCantBeChanged" xml:space="preserve">
+    <value>نام ترم فقط در زمان ثبت نام قابل تغییر است.</value>
+  </data>
+  <data name="StartDateCantBeChanged" xml:space="preserve">
+    <value>زمان شروع ترم فقط قبل از اتمام ترم قابل تغییر است.</value>
+  </data>
+  <data name="EndDateCantBeChanged" xml:space="preserve">
+    <value>زمان پایان ترم فقط قبل از اتمام ترم قابل تغییر است.</value>
+  </data>
+  <data name="EnrollmentStartTimeCantBeChanged" xml:space="preserve">
+    <value>زمان شروع ثبت نام فقط در زمان ثبت نام قابل تغییر است.</value>
+  </data>
+  <data name="EnrollmentEndTimeCantBeChanged" xml:space="preserve">
+    <value>زمان پایان ثبت نام فقط در زمان ثبت نام قابل تغییر است.</value>
+  </data>
+  <data name="NameUniqueness" xml:space="preserve">
+    <value>نام ترم تکراری است.</value>
+  </data>
+  <data name="SemesterTimingConflict" xml:space="preserve">
+    <value>زمان بندی ترم با ترمی دیگر تداخل دارد.</value>
+  </data>
+  <data name="EnterMajor" xml:space="preserve">
+    <value>رشته دانشجو را وارد کنید</value>
+  </data>
+  <data name="EnterParty" xml:space="preserve">
+    <value>دانشجو را وارد کنید</value>
+  </data>
+  <data name="PartyRegisteringTwice" xml:space="preserve">
+    <value>هر دانشجو می تواند در هر رشته فقط یکبار ثبت نام کند.</value>
+  </data>
+  <data name="PrerequisiteViolation" xml:space="preserve">
+    <value>پیشنیاز های دروس رعایت نشده است.</value>
+  </data>
+  <data name="EnrollmentAccessDenied" xml:space="preserve">
+    <value>شما اجازه تغییر ثبت نام را ندارید</value>
+  </data>
+  <data name="EnrollmentTimingViolation" xml:space="preserve">
+    <value>ثبت نام ترم فقط در زمان مشخص شده مجاز است.</value>
+  </data>
+  <data name="PrerequisiteViolationList" xml:space="preserve">
+    <value>پیش نیازهای دروس {0} رعایت نشده است.</value>
+  </data>
+  <data name="CourseAlreadyPassed" xml:space="preserve">
+    <value>درس {0} قبلا گذرانده شده است.</value>
+  </data>
+  <data name="RepeatingCourse" xml:space="preserve">
+    <value>درسی که انتخاب شده است، تکراری است.</value>
+  </data>
+  <data name="FullOnCapacity" xml:space="preserve">
+    <value>ظرفیت {0} پر است.</value>
+  </data>
+  <data name="SelfLoopingPrerequisite" xml:space="preserve">
+    <value>یک درس نمی تواند پیشنیاز خودش باشد.</value>
+  </data>
+  <data name="CycleDetected" xml:space="preserve">
+    <value>میان دروس و پیشنیاز ها نمی تواند چرخه ای وجود داشته باشد.</value>
+  </data>
+  <data name="EnterEnrollmentEndTime" xml:space="preserve">
+    <value>زمان پایان انتخاب واحد را وارد کنید.</value>
+  </data>
+  <data name="EnterEnrollmentStartTime" xml:space="preserve">
+    <value>زمان شروع انتخاب واحد را وارد کنید.</value>
+  </data>
+  <data name="EnterSemesterEndDate" xml:space="preserve">
+    <value>زمان پایان ترم را وارد کنید.</value>
+  </data>
+  <data name="EnterSemesterStartDate" xml:space="preserve">
+    <value>زمان شروع ترم را وارد کنید.</value>
+  </data>
+  <data name="EnterSemesterName" xml:space="preserve">
+    <value>نام ترم را وارد کنید.</value>
+  </data>
+  <data name="ChooseSemester" xml:space="preserve">
+    <value>ترم را انتخاب کنید.</value>
+  </data>
+  <data name="ChooseMajor" xml:space="preserve">
+    <value>رشته را انتخاب کنید.</value>
+  </data>
+  <data name="ChooseCourse" xml:space="preserve">
+    <value>درس را انتخاب کنید.</value>
+  </data>
+  <data name="ChooseProfessor" xml:space="preserve">
+    <value>استاد را انتخاب کنید.</value>
+  </data>
+  <data name="ChooseStudent" xml:space="preserve">
+    <value>دانشجو را انتخاب کنید.</value>
+  </data>
+  <data name="EnterUnits" xml:space="preserve">
+    <value>تعداد واحد ها را وارد کنید.</value>
+  </data>
+  <data name="ChooseSemesterCoursePlan" xml:space="preserve">
+    <value>یک برنامه تحصیلی انتخاب کنید.</value>
+  </data>
+  <data name="ChooseSemesterCoursePlanItem" xml:space="preserve">
+    <value>کلاس را انتخاب کنید.</value>
+  </data>
+  <data name="EnterCourseName" xml:space="preserve">
+    <value>نام درس را وارد کنید.</value>
+  </data>
+  <data name="ChoosePrerequisite" xml:space="preserve">
+    <value>پیشنیاز را انتخاب کنید.</value>
+  </data>
+  <data name="SemesterCoursePlanItemTimeTableConflict" xml:space="preserve">
+    <value>زمان بندی های درس باهم در تداخل هستند.</value>
+  </data>
+  <data name="SemesterCoursePlanItemTimeTableInvalid" xml:space="preserve">
+    <value>زمان شروع کلاس نمی تواند بعد از پایان کلاس باشد.</value>
+  </data>
+  <data name="ScoresSavedSuccessfuly" xml:space="preserve">
+    <value>نمرات ذخیره شدند.</value>
+  </data>
+  <data name="ScoreRangeViolation" xml:space="preserve">
+    <value>نمرات باید بین 0 تا 20 باشند</value>
+  </data>
 </root>

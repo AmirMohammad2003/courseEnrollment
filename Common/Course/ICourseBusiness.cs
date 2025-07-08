@@ -12,7 +12,7 @@ namespace SystemGroup.General.CourseEnrollment.Common
     [ServiceInterface]
     public interface ICourseBusiness : IBusinessBase<Course>
     {
-        [EntityView("AllCourse", "لیست دروس", typeof(CourseProjection), "Name", IsDefaultView = true)]
+        [EntityView("AllCourse", "Labels_AllCourse", typeof(CourseProjection), "Name", IsDefaultView = true)]
         new IQueryable<Course> FetchAll();
 
         [EntityView("AllMajorCourses", "_", typeof(CourseProjection), "Name", ShowInViewList = false)]

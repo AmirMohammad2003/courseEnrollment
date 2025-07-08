@@ -25,17 +25,17 @@ namespace SystemGroup.General.CourseEnrollment.Business.BusinessValidators
 
             if (record.StartDate > record.EndDate)
             {
-                throw this.CreateException("زمان شروع ترم نمی تواند بعد از پایان ترم باشد.");
+                throw this.CreateException("Messages_StartDateAfterEndDate");
             }
 
             if (record.EnrollmentStartTime > record.EnrollmentEndTime)
             {
-                throw this.CreateException("زمان شروع ثبت نام نمی تواند بعد از پایان ثبت نام باشد.");
+                throw this.CreateException("Messages_EnrollmentStartTimeAfterEndTime");
             }
 
             if (record.StartDate <= record.EnrollmentEndTime)
             {
-                throw this.CreateException("زمان شروع ثبت نام نمی تواند بعد از شروع ترم باشد.");
+                throw this.CreateException("Messages_EnrollmentAfterStartDatet");
             }
 
             if (action == EntityActionType.Update)
@@ -49,35 +49,35 @@ namespace SystemGroup.General.CourseEnrollment.Business.BusinessValidators
                         case "Name":
                             if (record.State != SemesterStatus.Registering)
                             {
-                                throw this.CreateException("نام ترم فقط در زمان ثبت نام قابل تغییر است.");
+                                throw this.CreateException("Messages_SemesterNameCantBeChanged");
                             }
 
                             break;
                         case "StartDate":
                             if (record.State != SemesterStatus.Finished)
                             {
-                                throw this.CreateException("زمان شروع ترم فقط قبل از اتمام ترم قابل تغییر است.");
+                                throw this.CreateException("Messages_StartDateCantBeChanged");
                             }
 
                             break;
                         case "EndDate":
                             if (record.State != SemesterStatus.Finished)
                             {
-                                throw this.CreateException("زمان پایان ترم فقط قبل از اتمام ترم قابل تغییر است.");
+                                throw this.CreateException("Messages_EndDateCantBeChanged");
                             }
 
                             break;
                         case "EnrollmentStartTime":
                             if (record.State != SemesterStatus.Registering)
                             {
-                                throw this.CreateException("زمان شروع ثبت نام فقط در زمان ثبت نام قابل تغییر است.");
+                                throw this.CreateException("Messages_EnrollmentStartTimeCantBeChanged");
                             }
 
                             break;
                         case "EnrollmentEndTime":
                             if (record.State != SemesterStatus.Registering)
                             {
-                                throw this.CreateException("زمان پایان ثبت نام فقط در زمان ثبت نام قابل تغییر است.");
+                                throw this.CreateException("Messages_EnrollmentEndTimeCantBeChanged");
                             }
 
                             break;
@@ -93,7 +93,7 @@ namespace SystemGroup.General.CourseEnrollment.Business.BusinessValidators
 
             if (semesterBusiness.FetchByFilter(i => i.Name == record.Name && i.ID != record.ID).Any())
             {
-                throw this.CreateException("نام ترم تکراری است.");
+                throw this.CreateException("Messages_NameUniqueness");
             }
 
             var result = semesterBusiness.FetchByFilter(i =>
@@ -104,7 +104,7 @@ namespace SystemGroup.General.CourseEnrollment.Business.BusinessValidators
 
             if (result.Any())
             {
-                throw this.CreateException("زمان بندی ترم با ترمی دیگر تداخل دارد.");
+                throw this.CreateException("Messages_SemesterTimingConflict");
             }
         }
     }

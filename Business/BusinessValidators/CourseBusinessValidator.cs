@@ -30,7 +30,7 @@ namespace SystemGroup.General.CourseEnrollment.Business
             {
                 if (prerequisite.CourseRef == prerequisite.PrerequisiteCourseRef)
                 {
-                    throw this.CreateException("یک درس نمی تواند پیشنیاز خودش باشد.");
+                    throw this.CreateException("Messages_SelfLoopingPrerequisite");
                 }
 
                 long id1 = prerequisite.CourseRef;
@@ -66,7 +66,7 @@ namespace SystemGroup.General.CourseEnrollment.Business
 
             if (DetectCycle(graph, ids))
             {
-                throw this.CreateException("میان دروس و پیشنیاز ها نمی تواند چرخه ای وجود داشته باشد.");
+                throw this.CreateException("Messages_CycleDetected");
             }
 
         }

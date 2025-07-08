@@ -43,8 +43,10 @@ namespace SystemGroup.General.CourseEnrollment.Web.SemesterCoursePlanPages
 
         public override DetailLoadOptions EntityLoadOptions
         {
-            get {
-                return LoadOptions.With<SemesterCoursePlan>(i => i.SemesterCoursePlanItems);
+            get
+            {
+                return LoadOptions.With<SemesterCoursePlan>(i => i.SemesterCoursePlanItems)
+                    .With<SemesterCoursePlanItem>(i => i.TimeTables);
             }
         }
 
@@ -53,8 +55,10 @@ namespace SystemGroup.General.CourseEnrollment.Web.SemesterCoursePlanPages
             get
             {
                 yield return ".SemesterCoursePlanItems";
+                yield return ".SemesterCoursePlanItems.TimeTables";
             }
         }
+
         #endregion
 
         #region Methods
@@ -64,6 +68,10 @@ namespace SystemGroup.General.CourseEnrollment.Web.SemesterCoursePlanPages
             base.OnEntityLoaded(sender, e);
 
             SemesterCoursePlanItem.FillExtraProperties(CurrentEntity.SemesterCoursePlanItems);
+            foreach (var item in CurrentEntity.SemesterCoursePlanItems)
+            {
+                TimeTable.FillExtraProperties(item.TimeTables);
+            }
             SetUIProperties();
         }
 
@@ -80,9 +88,10 @@ namespace SystemGroup.General.CourseEnrollment.Web.SemesterCoursePlanPages
 
             e.Context.BindValueTypeProperty(coursePlan => coursePlan.SemesterRef).To(sltSemester);
             e.Context.BindValueTypeProperty(coursePlan => coursePlan.MajorRef).To(sltMajor);
+            
         }
 
-        protected void sltCourse_ItemsRequested(object sender, Telerik.Web.UI.RadComboBoxItemsRequestedEventArgs  e)
+        protected void sltCourse_ItemsRequested(object sender, Telerik.Web.UI.RadComboBoxItemsRequestedEventArgs e)
         {
             var slt = sender as SgSelector;
 
@@ -96,6 +105,7 @@ namespace SystemGroup.General.CourseEnrollment.Web.SemesterCoursePlanPages
             var ds = FindDataSource(".SemesterCoursePlanItems");
             ds.OnClientInsertedEntity = "ds_insertedEntity";
             ds.OnClientRemovedEntity = "ds_removedEntity";
+
         }
 
         private void SetGridEnabled(bool enabled)
@@ -116,12 +126,14 @@ namespace SystemGroup.General.CourseEnrollment.Web.SemesterCoursePlanPages
             {
                 SetGridEnabled(true);
                 sltMajor.Enabled = count == 0;
-            } else
+            }
+            else
             {
                 SetGridEnabled(false);
                 sltMajor.Enabled = true;
             }
         }
+
         #endregion
     }
 }

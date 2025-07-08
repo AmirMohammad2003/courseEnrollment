@@ -22,12 +22,12 @@ namespace SystemGroup.General.CourseEnrollment.Business
 
             if (majorRef == 0)
             {
-                throw this.CreateException("رشته دانشجو را وارد کنید");
+                throw this.CreateException("Messages_EnterMajor");
             }
 
             if (PartyRef == 0)
             {
-                throw this.CreateException("دانشجو را وارد کنید");
+                throw this.CreateException("Messages_EnterParty");
             }
 
             var result = ServiceFactory.Create<IPartyMajorBusiness>()
@@ -35,7 +35,7 @@ namespace SystemGroup.General.CourseEnrollment.Business
 
             if (result.Any())
             {
-                throw this.CreateException("هر دانشجو می تواند در هر رشته فقط یکبار ثبت نام کند.");
+                throw this.CreateException("Messages_PartyRegisteringTwice");
             }
         }
     }

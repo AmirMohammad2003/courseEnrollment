@@ -13,10 +13,10 @@ namespace SystemGroup.General.CourseEnrollment.Common
     [ServiceInterface]
     public interface IPartyService
     {
-        [EntityView("AllStudentParties", "دانشجویان", typeof(PartySimpleProjection), "FullName", "CourseEnrollment.Moderator")]
+        [EntityView("AllStudentParties", "Labels_Students", typeof(PartySimpleProjection), "FullName", "CourseEnrollment.Moderator")]
         IQueryable<IParty> FetchAllStudentParties();
 
-        [EntityView("AllProfessorParties", "اساتید", typeof(PartySimpleProjection), "FullName", "CourseEnrollment.Moderator")]
+        [EntityView("AllProfessorParties", "Labels_Professors", typeof(PartySimpleProjection), "FullName", "CourseEnrollment.Moderator")]
         IQueryable<IParty> FetchAllProfessorParties();
     }
 }

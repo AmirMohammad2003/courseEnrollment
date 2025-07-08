@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 using SystemGroup.Framework.Business;
 using SystemGroup.Framework.Common;
 using SystemGroup.Framework.Logging;
+using SystemGroup.Framework.Lookup;
 using SystemGroup.Framework.Security;
 using SystemGroup.Framework.Service;
 using SystemGroup.Framework.Utilities;
@@ -146,10 +147,18 @@ namespace SystemGroup.General.CourseEnrollment.Web.EnrollmentPages
                 Select(o => Convert.ToInt64(o)).
                 ToList();
             slt.FilterExpression = o => !ignoredIDs.Contains(((Entity)o).ID);
-
             slt.ViewParameters[0].Value = Convert.ToInt64(e.Context["id"]);
         }
 
+        protected void sltCourse_SelectedIndexChanged(SgSelector sender, Telerik.Web.UI.RadComboBoxSelectedIndexChangedEventArgs e)
+        {
+            var coursePlanItem = ServiceFactory.Create<ISemesterCoursePlanBusiness>()
+                .FetchDetail<SemesterCoursePlanItem>(LoadOptions.With<SemesterCoursePlanItem>(i => i.TimeTables))
+                .Where(i => i.ID == Convert.ToInt64(e.Value.Trim())).First();
+            var timeTables = coursePlanItem.TimeTables;
+            var parsed  = string.Join(", ", 
+                timeTables.Select((TimeTable timetable) => $"{LookupService.Lookup(timetable.DayOfTheWeek).Value} {EnrollmentItem.formatTime(timetable.Start)}-{EnrollmentItem.formatTime(timetable.End)}"));
+        }
         #endregion
     }
 }

@@ -39,8 +39,8 @@ namespace SystemGroup.General.CourseEnrollment.Common
             columns.Add(new EntityColumnInfo<EnrollmentItem>("EnrollmentRef"));
             columns.Add(new EntityColumnInfo<EnrollmentItem>("SemesterCoursePlanItemRef"));
             columns.Add(new EntityColumnInfo<EnrollmentItem>("Score"));
-            columns.Add(new TextColumnInfo("CourseName", "نام درس"));
-            columns.Add(new TextColumnInfo("PartyName", "نام استاد"));
+            columns.Add(new TextColumnInfo("CourseName", "Labels_Course"));
+            columns.Add(new TextColumnInfo("PartyName", "Labels_Professor"));
         }
 
         #endregion

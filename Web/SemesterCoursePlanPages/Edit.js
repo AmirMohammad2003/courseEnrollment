@@ -28,3 +28,7 @@ function ds_removedEntity(sender, args) {
         $find("sltMajor").enable();
 }
 
+function lkpDayOfTheWeek_SelectedCodeChanged(sender, args) {
+    let grid = $find("grdTimeTables");
+    Sys.Observer.setValue(grid.get_tempEntity(), "UI_DayOfTheWeek", sender.get_selectedValue());
+}

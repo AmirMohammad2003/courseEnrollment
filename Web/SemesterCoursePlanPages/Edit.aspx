@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Edit.aspx.cs"
     Inherits="SystemGroup.General.CourseEnrollment.Web.SemesterCoursePlanPages.Edit" 
-    Title="برنامه تحصیلی"%>
+    Title="Labels_SemesterCoursePlan"%>
 
 <!DOCTYPE html>
 
@@ -22,7 +22,7 @@
                         <sg:sgfieldlayout runat="server" LabelCellWidth="130px">
                             <sg:sgtablerow>
                                 <sg:sgtablecell>
-                                    <sg:sgfieldlabel runat="server" text="ترم" required="true"></sg:sgfieldlabel>
+                                    <sg:sgfieldlabel runat="server" textkey="Labels_Semester" required="true"></sg:sgfieldlabel>
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
                                     <sg:sgselector runat="server" id="sltSemester"
@@ -32,12 +32,12 @@
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
                                     <sg:sgrequiredfieldvalidator runat="server" controltovalidate="sltSemester" 
-                                        errormessage="ترم را وارد کنید."></sg:sgrequiredfieldvalidator>
+                                        errormessagekey="Messages_ChooseSemester"></sg:sgrequiredfieldvalidator>
                                 </sg:sgtablecell>
                             </sg:sgtablerow>
                             <sg:sgtablerow>
                                 <sg:sgtablecell>
-                                    <sg:sgfieldlabel runat="server" text="رشته" required="true"></sg:sgfieldlabel>
+                                    <sg:sgfieldlabel runat="server" textkey="Labels_Major" required="true"></sg:sgfieldlabel>
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
                                     <sg:sgselector runat="server" id="sltMajor"
@@ -47,16 +47,16 @@
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
                                     <sg:sgrequiredfieldvalidator runat="server" controltovalidate="sltMajor" 
-                                        errormessage="رشته را انتخاب کنید."></sg:sgrequiredfieldvalidator>
+                                        errormessagekey="Messages_ChooseMajor"></sg:sgrequiredfieldvalidator>
                                 </sg:sgtablecell>
                             </sg:sgtablerow>
                         </sg:sgfieldlayout>
                     </sg:sgfieldset>
                     <sg:sggrid runat="server" id="grdCourses" gridtype="ClientSide" allowscroll="true"
-                        allowedit="true" allowdelete="true" allowinsert="true"
+                        allowedit="true" allowdelete="true" allowinsert="true" isMaster="true"
                         datasourceid=".SemesterCoursePlanItems" validationgroup="vgGrid">
                         <Columns>
-                            <sg:SgSelectorGridColumn PropertyName="CourseName" HeaderText="درس">
+                            <sg:SgSelectorGridColumn PropertyName="CourseName" HeaderText="Labels_Course">
                                 <EditItemTemplate>
                                     <sg:SgSelector runat="server" ID="sltCourse"
                                         ComponentName="SystemGroup.General.CourseEnrollment"
@@ -74,10 +74,10 @@
 
                                     </sg:SgSelector>
                                     <sg:SgRequiredFieldValidator runat="server" ControlToValidate="sltCourse"
-                                        errormessage="درس را انتخاب کنید." ValidationGroup="vgGrid"/>
+                                        errormessagekey="Messages_ChooseCourse" ValidationGroup="vgGrid"/>
                                 </EditItemTemplate>
                             </sg:SgSelectorGridColumn>
-                            <sg:SgSelectorGridColumn PropertyName="PartyName" HeaderText="استاد">
+                            <sg:SgSelectorGridColumn PropertyName="PartyName" HeaderText="Labels_Professor">
                                 <EditItemTemplate>
                                     <sg:SgSelector runat="server" ID="sltParty"
                                         ComponentName="SystemGroup.General.IPartyManagement"
@@ -89,16 +89,44 @@
                                         </Properties>
                                     </sg:SgSelector>
                                     <sg:SgRequiredFieldValidator runat="server" ControlToValidate="sltCourse"
-                                        errormessage="استاد را انتخاب کنید." ValidationGroup="vgGrid"/>
+                                        errormessagekey="Messages_ChooseProfessor" ValidationGroup="vgGrid"/>
                                 </EditItemTemplate>
                             </sg:SgSelectorGridColumn>
-                            <sg:SgNumericGridColumn PropertyName="Capacity" HeaderText="ظرفیت">
+                            <sg:SgNumericGridColumn PropertyName="Capacity" HeaderText="Labels_Capacity">
                                 <EditItemTemplate>
                                     <sg:sgnumerictextbox runat="server" id="txtCapacity" value="1" minvalue="0" maxvalue="9999999"
                                         numberformat-decimaldigits="0" datatype="System.Int" CbValue="{binding Capacity}" />
                                 </EditItemTemplate>
                             </sg:SgNumericGridColumn>
-                            <sg:SgTextGridColumn PropertyName="Taken" HeaderText="اخذ شده" AllowEdit="false" />
+                            <sg:SgTextGridColumn PropertyName="Taken" HeaderText="Labels_Taken" AllowEdit="false" />
+                        </Columns>
+                    </sg:SgGrid>
+                    <sg:sggrid runat="server" id="grdTimeTables" gridtype="ClientSide" 
+                        allowscroll="true" allowedit="true" allowdelete="true" allowinsert="true"
+                        datasourceid=".SemesterCoursePlanItems.TimeTables" validationgroup="vgTimeGrid">
+                        <Columns>
+                            <Sg:SgLookupGridColumn 
+                                PropertyName="UI_DayOfTheWeek" 
+                                HeaderText="Labels_DayOfTheWeek">
+                                <EditItemTemplate>
+                                    <sg:sglookup
+                                        id="lkpDayOfTheWeek"
+                                        runat="server"
+                                        lookuptype="DayOfTheWeek" 
+                                        CbSelectedCode="{binding DayOfTheWeek}" 
+                                        OnClientSelectedCodeChanged="lkpDayOfTheWeek_SelectedCodeChanged" />
+                                </EditItemTemplate>
+                            </Sg:SgLookupGridColumn>
+                            <sg:SgTimePickerGridColumn PropertyName="Start" HeaderText="Labels_StartTime"> 
+                                <EditItemTemplate>
+                                    <sg:SgTimePicker runat="server" id="tpStart" CbSelectedTime="{binding Start}" />
+                                </EditItemTemplate>
+                            </sg:SgTimePickerGridColumn>
+                            <sg:SgTimePickerGridColumn propertyname="End" headertext="Labels_EndTime">
+                                <EditItemTemplate>
+                                    <sg:SgTimePicker runat="server" id="tpEnd" CbSelectedTime="{binding End}" />
+                                </EditItemTemplate>
+                            </sg:SgTimePickerGridColumn>
                         </Columns>
                     </sg:SgGrid>
                 </div>

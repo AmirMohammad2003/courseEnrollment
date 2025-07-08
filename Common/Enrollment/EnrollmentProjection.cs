@@ -37,8 +37,8 @@ namespace SystemGroup.General.CourseEnrollment.Common
         {
             base.GetColumns(columns);
 
-            columns.Add(new TextColumnInfo("FullName", "نام دانشجو"));
-            columns.Add(new TextColumnInfo("SemesterName", "ترم"));
+            columns.Add(new TextColumnInfo("FullName", "Labels_Student"));
+            columns.Add(new TextColumnInfo("SemesterName", "Labels_Semester"));
             columns.Add(new EntityColumnInfo<Enrollment>("State"));
             columns.Add(new EntityColumnInfo<Enrollment>("GPA"));
             columns.Add(new EntityColumnInfo<Enrollment>("SemesterCoursePlanRef"));

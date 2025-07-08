@@ -16,8 +16,6 @@ namespace SystemGroup.General.CourseEnrollment.Common
     [Serializable]
     [Master(typeof(ISemesterCoursePlanBusiness))]
     [DataNature(DataNature.BusinessTransaction)]
-    [AssociatedWith(typeof(Semester), "SemesterRef", AssociationType.OneToOne)]
-    [AssociatedWith(typeof(Major), "MajorRef", AssociationType.ManyToOne)]
     partial class SemesterCoursePlan : Entity
     {
 
@@ -25,7 +23,7 @@ namespace SystemGroup.General.CourseEnrollment.Common
 
         public override string GetEntityName()
         {
-            return "برنامه تحصیلی"; 
+            return "Labels_SemesterCoursePlan"; 
         }
         public override void GetColumns(List<ColumnInfo> columns)
         {

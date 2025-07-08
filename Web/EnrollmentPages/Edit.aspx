@@ -22,7 +22,7 @@
                         <sg:sgfieldlayout runat="server" labelcellwidth="130px">
                             <sg:sgtablerow>
                                 <sg:sgtablecell>
-                                    <sg:sgfieldlabel runat="server" text="برنامه تحصیلی" required="true"></sg:sgfieldlabel>
+                                    <sg:sgfieldlabel runat="server" textkey="Labels_SemesterCoursePlan" required="true"></sg:sgfieldlabel>
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
                                     <sg:sgselector runat="server" id="sltSemesterCoursePlan"
@@ -34,7 +34,7 @@
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
                                     <sg:sgrequiredfieldvalidator runat="server" controltovalidate="sltSemesterCoursePlan"
-                                        errormessage="یک برنامه تحصیلی انتخاب کنید.">
+                                        errormessagekey="Messages_ChooseSemesterCoursePlan">
                                     </sg:sgrequiredfieldvalidator>
                                 </sg:sgtablecell>
                             </sg:sgtablerow>
@@ -52,7 +52,7 @@
                                 datasourceid=".EnrollmentItems" validationgroup="vgGrid"
                                 Width="780px" ContentWidth="1280px" Height="240px">
                                 <columns>
-                                    <sg:sgselectorgridcolumn propertyname="CourseName" headertext="کلاس">
+                                    <sg:sgselectorgridcolumn propertyname="CourseName" headertext="Labels_Class">
                                         <edititemtemplate>
                                             <sg:sgselector runat="server" id="sltCourse"
                                                 componentname="SystemGroup.General.CourseEnrollment"
@@ -71,10 +71,11 @@
                                                 </viewparameters>
                                             </sg:sgselector>
                                             <sg:sgrequiredfieldvalidator runat="server" controltovalidate="sltCourse"
-                                                errormessage="کلاس را انتخاب کنید." validationgroup="vgGrid" />
+                                                errormessagekey="Messages_ChooseSemesterCoursePlanItem" validationgroup="vgGrid" />
                                         </edititemtemplate>
                                     </sg:sgselectorgridcolumn>
-                                    <sg:sgtextgridcolumn propertyname="PartyName" headertext="استاد" allowedit="false" />
+                                    <sg:sgtextgridcolumn propertyname="PartyName" headertext="Labels_Professor" allowedit="false" />
+                                    <sg:sgtextgridcolumn propertyname="TimeTables" headertext="Labels_TimeTable" allowedit="false" />
                                 </columns>
                             </sg:sggrid>
                         </telerik:radpageview>

@@ -41,6 +41,7 @@
       <None Remove="EnrollmentPages\Edit.js" />
       <None Remove="PartyMajorPages\Edit.aspx" />
       <None Remove="SemesterCoursePlanPages\Edit.js" />
+      <None Remove="SemesterCoursePlanPages\EditClass.js" />
       <None Remove="SemesterPages\Edit.aspx" />
     </ItemGroup>
 
@@ -54,6 +55,8 @@
       <EmbeddedResource Include="PartyMajorPages\Edit.aspx" />
       <EmbeddedResource Include="SemesterCoursePlanPages\Edit.aspx" />
       <EmbeddedResource Include="SemesterCoursePlanPages\Edit.js" />
+      <EmbeddedResource Include="SemesterCoursePlanPages\EditClass.aspx" />
+      <EmbeddedResource Include="SemesterCoursePlanPages\EditClass.js" />
       <EmbeddedResource Include="SemesterPages\Edit.aspx" />
     </ItemGroup>
 

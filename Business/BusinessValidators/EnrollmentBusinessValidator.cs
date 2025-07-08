@@ -9,6 +9,7 @@ using SystemGroup.Framework.Localization;
 using SystemGroup.Framework.Logging;
 using SystemGroup.Framework.Security;
 using SystemGroup.Framework.Service;
+using SystemGroup.Framework.Utilities;
 using SystemGroup.General.CourseEnrollment.Common;
 
 
@@ -28,14 +29,19 @@ namespace SystemGroup.General.CourseEnrollment.Business
 
             var changeSet = record.GetChangedProperties();
 
+            record.Load<EnrollmentItem>(i => ((Enrollment)i).EnrollmentItems);
             var auth = ServiceFactory.Create<IAuthorizationService>();
             if (auth.HasAccess("CourseEnrollment.Enrollment.Approval"))
             {
-                if (changeSet.Count() != 1 || changeSet.First().PropertyName != "State")
+                if (changeSet.Count() == 0)
                 {
-                    throw this.CreateException("شما اجازه تغییر ثبت نام را ندارید");
+
                 }
-                // Check details
+                else if (changeSet.Count() != 1 || changeSet.First().PropertyName != "State")
+                {
+                    throw this.CreateException("Messages_EnrollmentAccessDenied");
+                }
+                return;
             }
 
 
@@ -49,7 +55,7 @@ namespace SystemGroup.General.CourseEnrollment.Business
                 semester.EnrollmentStartTime > DateTime.Today ||
                 semester.EnrollmentEndTime < DateTime.Today)
             {
-                throw this.CreateException("ثبت نام ترم فقط در زمان مشخص شده مجاز است.");
+                throw this.CreateException("Messages_EnrollmentTimingViolation");
             }
 
             var enrollmentBusiness = ServiceFactory.Create<IEnrollmentBusiness>();
@@ -63,13 +69,13 @@ namespace SystemGroup.General.CourseEnrollment.Business
                                      where item.Score >= 10 && item.Enrollment.PartyRef == record.PartyRef
                                      select item;
 
-            record.Load<EnrollmentItem>(i => ((Enrollment)i).EnrollmentItems);
 
             var enrollmentItems = record.EnrollmentItems;
             var courses = from item in enrollmentItems
                           join coursePlanItem in ServiceFactory.Create<ISemesterCoursePlanBusiness>()
                           .FetchDetail<SemesterCoursePlanItem>(LoadOptions
                           .With<SemesterCoursePlanItem>(i => i.Course)
+                          .With<SemesterCoursePlanItem>(i => i.TimeTables)
                           .With<SemesterCoursePlanItem>(i => i.EnrollmentItems)
                           .With<Course>(i => i.Prerequisites))
                           on item.SemesterCoursePlanItemRef equals coursePlanItem.ID
@@ -100,7 +106,7 @@ namespace SystemGroup.General.CourseEnrollment.Business
                 {
                     sb.Append(item + " ");
                 }
-                throw this.CreateException($"پیش نیازهای دروس {sb} رعایت نشده است.");
+                throw this.CreateException("Messages_PrerequisiteViolationList", sb);
             }
 
             var passedIDs = from item in allEnrollmentItems
@@ -124,13 +130,13 @@ namespace SystemGroup.General.CourseEnrollment.Business
                 {
                     sb.Append(item + " ");
                 }
-                throw this.CreateException($"درس {sb} قبلا گذرانده شده است.");
+                throw this.CreateException("Messages_CourseAlreadyPassed", sb);
             }
 
             var distinctCourses = courses.Select(i => i.Course).Distinct();
             if (distinctCourses.Count() != courses.Count())
             {
-                throw this.CreateException("درسی که انتخاب شده است، تکراری است.");
+                throw this.CreateException("RepeatingCourse");
             }
 
             var newCourses = courses.Where(i => i.EnrollmentItem.EntityModificationState == Entity.EntityState.New);
@@ -149,11 +155,51 @@ namespace SystemGroup.General.CourseEnrollment.Business
                 {
                     sb.Append(item + " ");
                 }
-                throw this.CreateException($"ظرفیت {sb} پر است.");
+                throw this.CreateException("FullOnCapacity", sb);
             }
 
-            // TODO: CHECK TIMETABLES
+            Dictionary<int, List<Pair<int, int>>> intervals = [];
+            foreach (var course in courses)
+            {
+                var timetables = course.coursePlanItem.TimeTables;
+                foreach (var timetable in timetables)
+                {
+                    if (timetable.Start >= timetable.End)
+                    {
+                        throw this.CreateException("Messages_SemesterCoursePlanItemTimeTableInvalid");
+                    }
 
+                    if (!intervals.TryGetValue(((int)timetable.DayOfTheWeek), out List<Pair<int, int>> value))
+                    {
+                        value = [];
+                        intervals.Add((int)timetable.DayOfTheWeek, value);
+                    }
+                    value.Add(new Pair<int, int>(timetable.Start, timetable.End));
+                }
+            }
+
+            foreach (var it in intervals)
+            {
+                var value = it.Value;
+                value.Sort((p1, p2) =>
+                {
+                    int result = p1.First.CompareTo(p2.First);
+                    if (result != 0)
+                    {
+                        return result;
+                    }
+
+                    return p1.Second.CompareTo(p2.Second);
+                });
+
+                for (int i = 0; i < value.Count - 1; i++)
+                {
+                    if (value[i].Second > value[i + 1].First)
+                    {
+                        throw this.CreateException("Messages_SemesterCoursePlanItemTimeTableConflict");
+                    }
+                }
+            }
         }
 
     }

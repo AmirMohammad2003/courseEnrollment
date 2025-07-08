@@ -12,7 +12,7 @@ namespace SystemGroup.General.CourseEnrollment.Common
     [ServiceInterface]
     public interface ISemesterBusiness : IBusinessBase<Semester>
     {
-        [EntityView("AllSemester", "لیست ترم ها", typeof(SemesterProjection), "Name", IsDefaultView = false)]
+        [EntityView("AllSemester", "Labels_SemesterList", typeof(SemesterProjection), "Name", IsDefaultView = false)]
         new IQueryable<Semester> FetchAll();
 
     }

@@ -39,7 +39,7 @@ namespace SystemGroup.General.CourseEnrollment.Business
                 {
                     if (!ids.Contains(prerequisite.PrerequisiteCourseRef))
                     {
-                        throw this.CreateException("پیشنیاز های دروس رعایت نشده است.");
+                        throw this.CreateException("Messages_PrerequisiteViolation");
                     }
                 }
             }

@@ -22,7 +22,7 @@
                                     <sg:sgtextbox runat="server" id="txtName" width="100px"></sg:sgtextbox>
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
-                                    <sg:sgrequiredfieldvalidator runat="server" controltovalidate="txtName" errormessage="نام ترم را وارد کنید."></sg:sgrequiredfieldvalidator>
+                                    <sg:sgrequiredfieldvalidator runat="server" controltovalidate="txtName" errormessagekey="Messages_EnterSemesterName"></sg:sgrequiredfieldvalidator>
                                 </sg:sgtablecell>
                             </sg:sgtablerow>
                             <sg:sgtablerow>
@@ -33,7 +33,7 @@
                                     <sg:sgdatepicker runat="server" id="dpkStartDate" allowtoggleculture="True" width="100px" />
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
-                                    <sg:sgrequiredfieldvalidator runat="server" controltovalidate="dpkStartDate" errormessage="زمان شروع ترم را وارد کنید."></sg:sgrequiredfieldvalidator>
+                                    <sg:sgrequiredfieldvalidator runat="server" controltovalidate="dpkStartDate" errormessagekey="Messages_EnterSemesterStartDate"></sg:sgrequiredfieldvalidator>
                                 </sg:sgtablecell>
                             </sg:sgtablerow>
                             <sg:sgtablerow>
@@ -44,7 +44,7 @@
                                     <sg:sgdatepicker runat="server" id="dpkEndDate" allowtoggleculture="True" width="100px" />
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
-                                    <sg:sgrequiredfieldvalidator runat="server" controltovalidate="dpkEndDate" errormessage="زمان پایان ترم را وارد کنید."></sg:sgrequiredfieldvalidator>
+                                    <sg:sgrequiredfieldvalidator runat="server" controltovalidate="dpkEndDate" errormessagekey="Messages_EnterSemesterStartDate"></sg:sgrequiredfieldvalidator>
                                 </sg:sgtablecell>
                             </sg:sgtablerow>
                             <sg:sgtablerow>
@@ -55,7 +55,7 @@
                                     <sg:sgdatepicker runat="server" id="dpkStartEnrollmentTime" allowtoggleculture="True" width="100px" />
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
-                                    <sg:sgrequiredfieldvalidator runat="server" controltovalidate="dpkStartEnrollmentTime" errormessage="زمان شروع انتخاب واحد را وارد کنید."></sg:sgrequiredfieldvalidator>
+                                    <sg:sgrequiredfieldvalidator runat="server" controltovalidate="dpkStartEnrollmentTime" errormessagekey="Messages_EnterEnrollmentStartTime"></sg:sgrequiredfieldvalidator>
                                 </sg:sgtablecell>
                             </sg:sgtablerow>
                             <sg:sgtablerow>
@@ -66,7 +66,7 @@
                                     <sg:sgdatepicker runat="server" id="dpkEndEnrollmentTime" allowtoggleculture="True" width="100px" />
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
-                                    <sg:sgrequiredfieldvalidator runat="server" controltovalidate="dpkEndEnrollmentTime" errormessage="زمان پایان انتخاب واحد را وارد کنید."></sg:sgrequiredfieldvalidator>
+                                    <sg:sgrequiredfieldvalidator runat="server" controltovalidate="dpkEndEnrollmentTime" errormessagekey="Messages_EnterEnrollmentEndTime"></sg:sgrequiredfieldvalidator>
                                 </sg:sgtablecell>
                             </sg:sgtablerow>
                         </sg:sgfieldlayout>

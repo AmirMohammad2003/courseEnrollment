@@ -16,8 +16,6 @@ namespace SystemGroup.General.CourseEnrollment.Common
 {
     [Serializable]
     [DetailOf(typeof(Course), "CourseRef")]
-    [SearchFields]
-    [AssociatedWith(typeof(Course), "PrerequisiteCourseRef", AssociationType.ManyToOne)]
     partial class Prerequisite : Entity
     {
         #region Properties
@@ -30,7 +28,7 @@ namespace SystemGroup.General.CourseEnrollment.Common
 
         public override string GetEntityName()
         {
-            return "پیشنیاز"; 
+            return "Labels_Prerequisite"; 
         }
         public override void GetColumns(List<ColumnInfo> columns)
         {

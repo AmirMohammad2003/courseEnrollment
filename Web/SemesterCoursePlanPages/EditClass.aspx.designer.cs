@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SystemGroup.General.CourseEnrollment.Web.MajorPages
+namespace SystemGroup.General.CourseEnrollment.Web.SemesterCoursePlanPages
 {
 
 
-    public partial class Edit 
+    public partial class EditClass 
     {
 
         /// <summary>
@@ -51,39 +51,12 @@ namespace SystemGroup.General.CourseEnrollment.Web.MajorPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl dvMain;
 
         /// <summary>
-        /// fldsetMain control.
+        /// grdParties control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SystemGroup.Web.UI.Controls.SgFieldSet fldsetMain;
-
-        /// <summary>
-        /// txtName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::SystemGroup.Web.UI.Controls.SgTextBox txtName;
-
-        /// <summary>
-        /// txtUnits control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::SystemGroup.Web.UI.Controls.SgNumericTextBox txtUnits;
-
-        /// <summary>
-        /// grdCourses control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::SystemGroup.Web.UI.Controls.SgGrid grdCourses;
+        protected global::SystemGroup.Web.UI.Controls.SgGrid grdParties;
     }
 }

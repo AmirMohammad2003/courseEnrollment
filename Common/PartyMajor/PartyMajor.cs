@@ -19,12 +19,15 @@ namespace SystemGroup.General.CourseEnrollment.Common
     [DataNature(DataNature.BusinessTransaction)]
     partial class PartyMajor : Entity
     {
+        #region Properties 
+
+        #endregion
 
         #region Methods
 
         public override string GetEntityName()
         {
-            return "ثبت نام دانشجو در دانشگاه"; 
+            return "Labels_PartyMajor";
         }
         public override void GetColumns(List<ColumnInfo> columns)
         {
@@ -33,8 +36,8 @@ namespace SystemGroup.General.CourseEnrollment.Common
             columns.Add(new ReferenceColumnInfo("MajorRef", "_"));
             columns.Add(new ReferenceColumnInfo("PartyRef", "_"));
             columns.Add(new ReferenceColumnInfo("ProfessorPartyRef", "_"));
-            columns.Add(new NumericColumnInfo("GPA", "معدل", NumericType.FloatingPoint)); 
-        } 
+            columns.Add(new NumericColumnInfo("GPA", "Labels_GPA", NumericType.FloatingPoint));
+        }
 
         #endregion
     }

@@ -40,9 +40,9 @@ namespace SystemGroup.General.CourseEnrollment.Common
         {
             base.GetColumns(columns);
 
-            columns.Add(new TextColumnInfo("FullName", "نام دانشجو"));
-            columns.Add(new TextColumnInfo("ProfessorName", "نام استاد راهنما"));
-            columns.Add(new TextColumnInfo("MajorName", "رشته تحصیلی"));
+            columns.Add(new TextColumnInfo("FullName", "Labels_Student"));
+            columns.Add(new TextColumnInfo("ProfessorName", "Labels_AssignedProfessor"));
+            columns.Add(new TextColumnInfo("MajorName", "Labels_Major"));
             columns.Add(new EntityColumnInfo<PartyMajor>("GPA"));
             columns.Add(new EntityColumnInfo<PartyMajor>("PartyRef"));
             columns.Add(new EntityColumnInfo<PartyMajor>("ProfessorPartyRef"));

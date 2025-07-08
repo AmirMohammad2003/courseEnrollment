@@ -60,6 +60,9 @@ namespace SystemGroup.General.CourseEnrollment.Common
     partial void InsertEnrollment(Enrollment instance);
     partial void UpdateEnrollment(Enrollment instance);
     partial void DeleteEnrollment(Enrollment instance);
+    partial void InsertTimeTable(TimeTable instance);
+    partial void UpdateTimeTable(TimeTable instance);
+    partial void DeleteTimeTable(TimeTable instance);
     #endregion
 		
 		public DataClassesDataContext(string connection) : 
@@ -163,6 +166,14 @@ namespace SystemGroup.General.CourseEnrollment.Common
 			get
 			{
 				return this.GetTable<Enrollment>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TimeTable> TimeTables
+		{
+			get
+			{
+				return this.GetTable<TimeTable>();
 			}
 		}
 	}
@@ -1838,6 +1849,8 @@ namespace SystemGroup.General.CourseEnrollment.Common
 		
 		private EntitySet<EnrollmentItem> _EnrollmentItems;
 		
+		private EntitySet<TimeTable> _TimeTables;
+		
 		private EntityRef<Course> _Course;
 		
 		private EntityRef<SemesterCoursePlan> _SemesterCoursePlan;
@@ -1865,6 +1878,7 @@ namespace SystemGroup.General.CourseEnrollment.Common
 		public SemesterCoursePlanItem()
 		{
 			this._EnrollmentItems = new EntitySet<EnrollmentItem>(new Action<EnrollmentItem>(this.attach_EnrollmentItems), new Action<EnrollmentItem>(this.detach_EnrollmentItems));
+			this._TimeTables = new EntitySet<TimeTable>(new Action<TimeTable>(this.attach_TimeTables), new Action<TimeTable>(this.detach_TimeTables));
 			this._Course = default(EntityRef<Course>);
 			this._SemesterCoursePlan = default(EntityRef<SemesterCoursePlan>);
 			OnCreated();
@@ -2031,6 +2045,19 @@ namespace SystemGroup.General.CourseEnrollment.Common
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SemesterCoursePlanItem_TimeTable", Storage="_TimeTables", ThisKey="ID", OtherKey="SemesterCoursePlanItemRef")]
+		public EntitySet<TimeTable> TimeTables
+		{
+			get
+			{
+				return this._TimeTables;
+			}
+			set
+			{
+				this._TimeTables.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Course_SemesterCoursePlanItem", Storage="_Course", ThisKey="CourseRef", OtherKey="ID", IsForeignKey=true)]
 		public Course Course
 		{
@@ -2126,6 +2153,18 @@ namespace SystemGroup.General.CourseEnrollment.Common
 		}
 		
 		private void detach_EnrollmentItems(EnrollmentItem entity)
+		{
+			this.SendPropertyChanging();
+			entity.SemesterCoursePlanItem = null;
+		}
+		
+		private void attach_TimeTables(TimeTable entity)
+		{
+			this.SendPropertyChanging();
+			entity.SemesterCoursePlanItem = this;
+		}
+		
+		private void detach_TimeTables(TimeTable entity)
 		{
 			this.SendPropertyChanging();
 			entity.SemesterCoursePlanItem = null;
@@ -2716,6 +2755,229 @@ namespace SystemGroup.General.CourseEnrollment.Common
 		{
 			this.SendPropertyChanging();
 			entity.Enrollment = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TimeTable")]
+	public partial class TimeTable : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private long _TimeTableID;
+		
+		private long _SemesterCoursePlanItemRef;
+		
+		private int _StartMinute;
+		
+		private int _EndHour;
+		
+		private DayOfTheWeek _DayOfTheWeek;
+		
+		private System.Data.Linq.Binary _Version;
+		
+		private EntityRef<SemesterCoursePlanItem> _SemesterCoursePlanItem;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(long value);
+    partial void OnIDChanged();
+    partial void OnSemesterCoursePlanItemRefChanging(long value);
+    partial void OnSemesterCoursePlanItemRefChanged();
+    partial void OnStartChanging(int value);
+    partial void OnStartChanged();
+    partial void OnEndChanging(int value);
+    partial void OnEndChanged();
+    partial void OnDayOfTheWeekChanging(DayOfTheWeek value);
+    partial void OnDayOfTheWeekChanged();
+    partial void OnVersionChanging(System.Data.Linq.Binary value);
+    partial void OnVersionChanged();
+    #endregion
+		
+		public TimeTable()
+		{
+			this._SemesterCoursePlanItem = default(EntityRef<SemesterCoursePlanItem>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="TimeTableID", Storage="_TimeTableID", DbType="BigInt NOT NULL", IsPrimaryKey=true, UpdateCheck=UpdateCheck.Never)]
+		public override long ID
+		{
+			get
+			{
+				return this._TimeTableID;
+			}
+			set
+			{
+				if ((this._TimeTableID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._TimeTableID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SemesterCoursePlanItemRef", DbType="BigInt NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public long SemesterCoursePlanItemRef
+		{
+			get
+			{
+				return this._SemesterCoursePlanItemRef;
+			}
+			set
+			{
+				if ((this._SemesterCoursePlanItemRef != value))
+				{
+					if (this._SemesterCoursePlanItem.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSemesterCoursePlanItemRefChanging(value);
+					this.SendPropertyChanging();
+					this._SemesterCoursePlanItemRef = value;
+					this.SendPropertyChanged("SemesterCoursePlanItemRef");
+					this.OnSemesterCoursePlanItemRefChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartMinute", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public int Start
+		{
+			get
+			{
+				return this._StartMinute;
+			}
+			set
+			{
+				if ((this._StartMinute != value))
+				{
+					this.OnStartChanging(value);
+					this.SendPropertyChanging();
+					this._StartMinute = value;
+					this.SendPropertyChanged("Start");
+					this.OnStartChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndHour", DbType="Int NOT NULL", UpdateCheck=UpdateCheck.Never)]
+		public int End
+		{
+			get
+			{
+				return this._EndHour;
+			}
+			set
+			{
+				if ((this._EndHour != value))
+				{
+					this.OnEndChanging(value);
+					this.SendPropertyChanging();
+					this._EndHour = value;
+					this.SendPropertyChanged("End");
+					this.OnEndChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DayOfTheWeek", DbType="Int NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public DayOfTheWeek DayOfTheWeek
+		{
+			get
+			{
+				return this._DayOfTheWeek;
+			}
+			set
+			{
+				if ((this._DayOfTheWeek != value))
+				{
+					this.OnDayOfTheWeekChanging(value);
+					this.SendPropertyChanging();
+					this._DayOfTheWeek = value;
+					this.SendPropertyChanged("DayOfTheWeek");
+					this.OnDayOfTheWeekChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Version", AutoSync=AutoSync.Always, DbType="rowversion NOT NULL", CanBeNull=false, IsDbGenerated=true, IsVersion=true, UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Version
+		{
+			get
+			{
+				return this._Version;
+			}
+			set
+			{
+				if ((this._Version != value))
+				{
+					this.OnVersionChanging(value);
+					this.SendPropertyChanging();
+					this._Version = value;
+					this.SendPropertyChanged("Version");
+					this.OnVersionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SemesterCoursePlanItem_TimeTable", Storage="_SemesterCoursePlanItem", ThisKey="SemesterCoursePlanItemRef", OtherKey="ID", IsForeignKey=true)]
+		public SemesterCoursePlanItem SemesterCoursePlanItem
+		{
+			get
+			{
+				return this._SemesterCoursePlanItem.Entity;
+			}
+			set
+			{
+				SemesterCoursePlanItem previousValue = this._SemesterCoursePlanItem.Entity;
+				if (((previousValue != value) 
+							|| (this._SemesterCoursePlanItem.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._SemesterCoursePlanItem.Entity = null;
+						previousValue.TimeTables.Remove(this);
+					}
+					this._SemesterCoursePlanItem.Entity = value;
+					if ((value != null))
+					{
+						value.TimeTables.Add(this);
+						this._SemesterCoursePlanItemRef = value.ID;
+					}
+					else
+					{
+						this._SemesterCoursePlanItemRef = default(long);
+					}
+					this.SendPropertyChanged("SemesterCoursePlanItem");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

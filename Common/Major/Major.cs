@@ -22,14 +22,14 @@ namespace SystemGroup.General.CourseEnrollment.Common
 
         public override string GetEntityName()
         {
-            return "رشته تحصیلی";
+            return "Labels_Major";
         }
         public override void GetColumns(List<ColumnInfo> columns)
         {
             base.GetColumns(columns);
 
-            columns.Add(new TextColumnInfo("Name", "نام رشته"));
-            columns.Add(new NumericColumnInfo("Units", "تعداد واحد", NumericType.Integer));
+            columns.Add(new TextColumnInfo("Name", "Labels_MajorName"));
+            columns.Add(new NumericColumnInfo("Units", "Labels_Units", NumericType.Integer));
         }
 
         #endregion

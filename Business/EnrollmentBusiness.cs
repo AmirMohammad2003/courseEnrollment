@@ -47,10 +47,5 @@ namespace SystemGroup.General.CourseEnrollment.Business
                    select enrollment;
         }
 
-        public virtual IQueryable<Enrollment> FetchAllCurrentUserStudentNotApprovedEnrollments()
-        {
-            return FetchAllCurrentUserStudentEnrollments()
-                .Where(i => i.State == EnrollmentStatus.WaitingForApproval);
-        }
     }
 }

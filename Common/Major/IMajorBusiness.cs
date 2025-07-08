@@ -12,7 +12,7 @@ namespace SystemGroup.General.CourseEnrollment.Common
     [ServiceInterface]
     public interface IMajorBusiness : IBusinessBase<Major>
     {
-        [EntityView("AllMajor", "تمام رشته ها", typeof(MajorProjection), "Name", IsDefaultView = true)]
+        [EntityView("AllMajor", "Labels_AllMajor", typeof(MajorProjection), "Name", IsDefaultView = true)]
         new IQueryable<Major> FetchAll();
     }
 }

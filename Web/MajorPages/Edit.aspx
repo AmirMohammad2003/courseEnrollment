@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Edit.aspx.cs" 
     Inherits="SystemGroup.General.CourseEnrollment.Web.MajorPages.Edit" 
-    Title="رشته تحصیلی"%>
+    Title="Labels_Major"%>
 
 <!DOCTYPE html>
 
@@ -22,26 +22,27 @@
                         <sg:sgfieldlayout runat="server" LabelCellWidth="130px">
                             <sg:sgtablerow>
                                 <sg:sgtablecell>
-                                    <sg:sgfieldlabel runat="server" text="نام رشته" required="true"></sg:sgfieldlabel>
+                                    <sg:sgfieldlabel runat="server" textkey="Labels_Name" required="true"></sg:sgfieldlabel>
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
                                     <sg:sgtextbox runat="server" id="txtName" width="100px"></sg:sgtextbox>
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
                                     <sg:sgrequiredfieldvalidator runat="server" controltovalidate="txtName" 
-                                        errormessage="نام رشته را وارد کنید."></sg:sgrequiredfieldvalidator>
+                                        errormessagekey="Messages_ChooseMajor"></sg:sgrequiredfieldvalidator>
                                 </sg:sgtablecell>
                             </sg:sgtablerow>
                             <sg:sgtablerow>
                                 <sg:sgtablecell>
-                                    <sg:sgfieldlabel runat="server" text="تعداد واحد" required="true"></sg:sgfieldlabel>
+                                    <sg:sgfieldlabel runat="server" textkey="Labels_Units" required="true"></sg:sgfieldlabel>
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
                                     <sg:sgnumerictextbox runat="server" id="txtUnits" value="1" minvalue="0" maxvalue="999" 
                                         width="100px" numberformat-decimaldigits="0" datatype="System.Int" />
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
-                                    <sg:sgrequiredfieldvalidator runat="server" controltovalidate="txtUnits" errormessage="تعداد واحد ها را وارد کنید."></sg:sgrequiredfieldvalidator>
+                                    <sg:sgrequiredfieldvalidator runat="server" controltovalidate="txtUnits" 
+                                        errormessagekey="Messages_EnterUnits"></sg:sgrequiredfieldvalidator>
                                 </sg:sgtablecell>
                             </sg:sgtablerow>
                         </sg:sgfieldlayout>
@@ -50,7 +51,7 @@
 						AllowEdit="true" AllowDelete="true" AllowInsert="true" 
 						DataSourceID=".MajorCourses" ValidationGroup="vgGrid" >
                         <Columns>
-							<sg:SgSelectorGridColumn PropertyName="CourseName" HeaderText="درس">
+							<sg:SgSelectorGridColumn PropertyName="CourseName" HeaderText="Labels_Course">
 								<EditItemTemplate>
 									<sg:SgSelector runat="server" ID="sltCourse"
 										ComponentName="SystemGroup.General.CourseEnrollment"
@@ -65,10 +66,10 @@
                                         </Properties>
 									</sg:SgSelector>
                                     <sg:SgRequiredFieldValidator runat="server" ControlToValidate="sltCourse"
-                                        errormessage="درس را انتخاب کنید." ValidationGroup="vgGrid"/>
+                                        errormessagekey="Messages_ChooseCourse" ValidationGroup="vgGrid"/>
 								</EditItemTemplate>
 							</sg:SgSelectorGridColumn>
-                            <sg:SgTextGridColumn PropertyName="CourseUnits" HeaderText="واحد" AllowEdit="false"/>
+                            <sg:SgTextGridColumn PropertyName="CourseUnits" HeaderText="Labels_Units" AllowEdit="false"/>
                         </Columns>
                     </sg:SgGrid>
                 </div>

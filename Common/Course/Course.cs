@@ -37,14 +37,14 @@ namespace SystemGroup.General.CourseEnrollment.Common
 
         public override string GetEntityName()
         {
-            return "درس"; 
+            return "Labels_Course"; 
         }
         public override void GetColumns(List<ColumnInfo> columns)
         {
             base.GetColumns(columns);
 
-            columns.Add(new TextColumnInfo("Name", "نام درس"));
-            columns.Add(new NumericColumnInfo("Units", "تعداد واحد", NumericType.Integer));
+            columns.Add(new TextColumnInfo("Name", "Labels_Name"));
+            columns.Add(new NumericColumnInfo("Units", "Labels_Units", NumericType.Integer));
         }
 
         #endregion

@@ -117,17 +117,86 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AllCourse" xml:space="preserve">
+    <value>تمام دروس</value>
+  </data>
+  <data name="AllMajor" xml:space="preserve">
+    <value>تمام رشته ها</value>
+  </data>
   <data name="Approved" xml:space="preserve">
     <value>تایید نهایی</value>
   </data>
+  <data name="AssignedProfessor" xml:space="preserve">
+    <value>استاد راهنما</value>
+  </data>
+  <data name="Capacity" xml:space="preserve">
+    <value>ظرفیت</value>
+  </data>
+  <data name="Class" xml:space="preserve">
+    <value>کلاس</value>
+  </data>
+  <data name="Course" xml:space="preserve">
+    <value>درس</value>
+  </data>
+  <data name="Courses" xml:space="preserve">
+    <value>دروس</value>
+  </data>
+  <data name="EnrolledCourse" xml:space="preserve">
+    <value>درس ثبت نام شده</value>
+  </data>
+  <data name="EnrolledCourses" xml:space="preserve">
+    <value>دروس ثبت نامی</value>
+  </data>
+  <data name="Enrollment" xml:space="preserve">
+    <value>ثبت نام</value>
+  </data>
+  <data name="Enrollments" xml:space="preserve">
+    <value>ثبت نام ها</value>
+  </data>
+  <data name="EnrollmentStatus" xml:space="preserve">
+    <value>وضعیت ثبت نام</value>
+  </data>
   <data name="Finished" xml:space="preserve">
     <value>تمام شده</value>
+  </data>
+  <data name="GPA" xml:space="preserve">
+    <value>معدل</value>
+  </data>
+  <data name="Major" xml:space="preserve">
+    <value>رشته تحصیلی</value>
+  </data>
+  <data name="Majors" xml:space="preserve">
+    <value>رشته های تحصیلی</value>
+  </data>
+  <data name="MajorName" xml:space="preserve">
+    <value>نام رشته</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>نام</value>
   </data>
   <data name="OnGoing" xml:space="preserve">
     <value>جاری</value>
   </data>
   <data name="OnGoingToFinished" xml:space="preserve">
     <value>اتمام ترم</value>
+  </data>
+  <data name="PartyMajor" xml:space="preserve">
+    <value>ثبت نام دانشجو در دانشگاه</value>
+  </data>
+  <data name="PartyMajors" xml:space="preserve">
+    <value>دانشجویان ثبت نامی</value>
+  </data>
+  <data name="Prerequisite" xml:space="preserve">
+    <value>پیشنیاز</value>
+  </data>
+  <data name="Prerequisites" xml:space="preserve">
+    <value>پیشنیاز‌ها</value>
+  </data>
+  <data name="Professor" xml:space="preserve">
+    <value>استاد</value>
+  </data>
+  <data name="Professors" xml:space="preserve">
+    <value>اساتید</value>
   </data>
   <data name="Registering" xml:space="preserve">
     <value>در حال ثبت نام</value>
@@ -141,6 +210,21 @@
   <data name="RegisterTitle" xml:space="preserve">
     <value>ثبت نام</value>
   </data>
+  <data name="Score" xml:space="preserve">
+    <value>نمره</value>
+  </data>
+  <data name="Semester" xml:space="preserve">
+    <value>ترم</value>
+  </data>
+  <data name="SemesterCoursePlan" xml:space="preserve">
+    <value>برنامه تحصیلی</value>
+  </data>
+  <data name="SemesterCoursePlanItem" xml:space="preserve">
+    <value>درس جاری ترم</value>
+  </data>
+  <data name="SemesterCoursePlans" xml:space="preserve">
+    <value>برنامه های تحصیلی</value>
+  </data>
   <data name="SemesterEndDate" xml:space="preserve">
     <value>زمان پایان ترم</value>
   </data>
@@ -149,6 +233,9 @@
   </data>
   <data name="SemesterEnrollmentStartDate" xml:space="preserve">
     <value>زمان شروع انتخاب واحد</value>
+  </data>
+  <data name="SemesterList" xml:space="preserve">
+    <value>لیست ترم ها</value>
   </data>
   <data name="SemesterName" xml:space="preserve">
     <value>نام ترم</value>
@@ -162,6 +249,27 @@
   <data name="SemesterState" xml:space="preserve">
     <value>وضعیت ترم</value>
   </data>
+  <data name="Student" xml:space="preserve">
+    <value>دانشجو</value>
+  </data>
+  <data name="StudentEnrollments" xml:space="preserve">
+    <value>ثبت نام های دانشجو</value>
+  </data>
+  <data name="Students" xml:space="preserve">
+    <value>دانشجویان</value>
+  </data>
+  <data name="StudentsEnrollment" xml:space="preserve">
+    <value>ثبت نام های دانشجوها</value>
+  </data>
+  <data name="Taken" xml:space="preserve">
+    <value>اخذ شده</value>
+  </data>
+  <data name="Units" xml:space="preserve">
+    <value>تعداد واحد</value>
+  </data>
+  <data name="UserEligibleSemesterCoursePlansq" xml:space="preserve">
+    <value>برنامه های تحصیلی مجاز برای دانشجو</value>
+  </data>
   <data name="WaitingForApproval" xml:space="preserve">
     <value>در انتظار تایید استاد راهنما</value>
   </data>
@@ -170,5 +278,68 @@
   </data>
   <data name="WaitingForApprovalToRegistering" xml:space="preserve">
     <value>عدم تایید</value>
+  </data>
+  <data name="University" xml:space="preserve">
+    <value>دانشگاه</value>
+  </data>
+  <data name="StudentEnrollmentInfo" xml:space="preserve">
+    <value>اطلاعات ثبت نام دانشجو</value>
+  </data>
+  <data name="StudentsEnrollmentInfo" xml:space="preserve">
+    <value>اطلاعات ثبت نام دانشجوها</value>
+  </data>
+  <data name="Moderator" xml:space="preserve">
+    <value>آموزش</value>
+  </data>
+  <data name="TimeTable" xml:space="preserve">
+    <value>زمان بندی</value>
+  </data>
+  <data name="DayOfTheWeek" xml:space="preserve">
+    <value>روز هفته</value>
+  </data>
+  <data name="StartHour" xml:space="preserve">
+    <value>ساعت شروع</value>
+  </data>
+  <data name="EndHour" xml:space="preserve">
+    <value>ساعت پایان</value>
+  </data>
+  <data name="StartMinute" xml:space="preserve">
+    <value>دقیقه شروع</value>
+  </data>
+  <data name="EndMinute" xml:space="preserve">
+    <value>دقیقه پایان</value>
+  </data>
+  <data name="EnrollmentStartTime" xml:space="preserve">
+    <value>زمان شروع انتخاب واحد</value>
+  </data>
+  <data name="EnrollmentEndTime" xml:space="preserve">
+    <value>زمان پایان انتخاب واحد</value>
+  </data>
+  <data name="StartTime" xml:space="preserve">
+    <value>زمان شروع</value>
+  </data>
+  <data name="EndTime" xml:space="preserve">
+    <value>زمان پایان</value>
+  </data>
+  <data name="TimeTables" xml:space="preserve">
+    <value>زمان بندی</value>
+  </data>
+  <data name="TeachingCourses" xml:space="preserve">
+    <value>دروس ارائه داده شده</value>
+  </data>
+  <data name="ListClasses" xml:space="preserve">
+    <value>دروس ارائه شده</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>ذخیره</value>
+  </data>
+  <data name="Reload" xml:space="preserve">
+    <value>بارگیری مجدد</value>
+  </data>
+  <data name="DefaultSharing_Insert" xml:space="preserve">
+    <value>ذخیره</value>
+  </data>
+  <data name="Scoring" xml:space="preserve">
+    <value>نمره دهی</value>
   </data>
 </root>

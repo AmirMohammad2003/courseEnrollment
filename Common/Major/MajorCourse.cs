@@ -15,7 +15,6 @@ namespace SystemGroup.General.CourseEnrollment.Common
 {
     [Serializable]
     [DetailOf(typeof(Major), "MajorRef")]
-    [AssociatedWith(typeof(Course), "CourseRef", AssociationType.OneToMany)]
     partial class MajorCourse : Entity
     {
         #region Properties
@@ -30,7 +29,7 @@ namespace SystemGroup.General.CourseEnrollment.Common
 
         public override string GetEntityName()
         {
-            return "درس رشته تحصیلی"; 
+            return "Labels_Course"; 
         }
         public override void GetColumns(List<ColumnInfo> columns)
         {

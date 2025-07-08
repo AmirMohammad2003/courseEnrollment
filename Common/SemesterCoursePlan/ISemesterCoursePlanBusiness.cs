@@ -12,14 +12,17 @@ namespace SystemGroup.General.CourseEnrollment.Common
     [ServiceInterface]
     public interface ISemesterCoursePlanBusiness : IBusinessBase<SemesterCoursePlan>
     {
-        [EntityView("AllSemesterCoursePlan", "برنامه های تحصیلی", typeof(SemesterCoursePlanProjection), "SemesterName", IsDefaultView = true)]
+        [EntityView("AllSemesterCoursePlan", "Labels_SemesterCoursePlans", typeof(SemesterCoursePlanProjection), "SemesterName", IsDefaultView = true, SearchInProjection = true)]
         new IQueryable<SemesterCoursePlan> FetchAll();
 
-        [EntityView("AllUserEligibleSemesterCoursePlan", "برنامه های تحصیلی مجاز برای دانشجو", typeof(SemesterCoursePlanProjection), "SemesterName", ShowInViewList = false)]
+        [EntityView("AllUserEligibleSemesterCoursePlan", "Labels_UserEligibleSemesterCoursePlans", typeof(SemesterCoursePlanProjection), "SemesterName", ShowInViewList = false, SearchInProjection = true)]
         IQueryable<SemesterCoursePlan> FetchAllUserEligibleSemesterCoursePlan();
 
-        [EntityView("AllSemesterCoursePlanItems", "دروس ثبت نامی", typeof(SemesterCoursePlanItemProjection), "CourseName", ShowInViewList = false, SearchInProjection = true)]
+        [EntityView("AllSemesterCoursePlanItems", "Labels_EnrolledCourses", typeof(SemesterCoursePlanItemProjection), "CourseName", ShowInViewList = false, SearchInProjection = true)]
         IQueryable<SemesterCoursePlanItem> FetchAllSemesterCoursePlanItems(long id);
+
+        [EntityView("AllProfessorSemesterCoursePlanItems", "Labels_TeachingCourses", typeof(SemesterCoursePlanItemProfessorProjection), "CourseName", SearchInProjection = true, SecurityKey = "CourseEnrollment.Enrollment.Approval")]
+        IQueryable<SemesterCoursePlanItem> FetchAllProfessorSemesterCoursePlanItems();
 
     }
 }

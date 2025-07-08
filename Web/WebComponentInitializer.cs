@@ -101,7 +101,6 @@ namespace SystemGroup.General.CourseEnrollment.Web
 
         #region SemesterCoursePlan EntityActions
 
-
         [AddNewEntityAction(typeof(SemesterCoursePlan), SecurityKey = "CourseEnrollment.Moderator.SemesterCoursePlan.New")]
         public void AddNewSemesterCoursePlan()
         {
@@ -124,6 +123,17 @@ namespace SystemGroup.General.CourseEnrollment.Web
             {
                 ServiceFactory.Create<ISemesterCoursePlanBusiness>().Delete(ids);
             }
+        }
+
+
+        [CustomEntityAction(typeof(SemesterCoursePlanItem), "Labels_Students")]
+        public void EditSemesterCoursePlanItem(params long[] ids)
+        {
+            foreach (long id in ids)
+            {
+                SgShell.Show<SemesterCoursePlanPages.EditClass>("id=" + id);
+            }
+
         }
 
         #endregion
@@ -179,31 +189,32 @@ namespace SystemGroup.General.CourseEnrollment.Web
 
         public override List<ComponentLink> RegisterLinks()
         {
-            return new List<ComponentLink>
-            {
-                new ComponentLink("University", "دانشگاه", "~/Icons/Education.png", null, 3, new ComponentLink[] {
-                    new ComponentLink("Student", "دانشجو", "~/Icons/List.gif", null, 0, new ComponentLink[]
-                    {
-                        new ComponentLink("ListEnrollments", "اطلاعات ثبت نام دانشجو", "~/Icons/BasicInfo.gif", "~/List.aspx?ComponentName=SystemGroup.General.CourseEnrollment&EntityName=Enrollment", 0, "{CourseEnrollment.Enrollment.New | CourseEnrollment.Enrollment.Edit}"),
-                        new ComponentLink("Enrollment", "ثبت نام", "~/Icons/Add.gif", "CourseEnrollment.Enrollment.New", typeof(EnrollmentPages.Edit), 0)
-                    }),
-                    new ComponentLink("Professor", "استاد", "~/Icons/BasicInfo.gif", null, 0, new ComponentLink[]
-                    {
-                        new ComponentLink("ListEnrollments", "اطلاعات ثبت نام دانشجوها", "~/Icons/BasicInfo.gif", "~/List.aspx?ComponentName=SystemGroup.General.CourseEnrollment&EntityName=Enrollment", 0, "CourseEnrollment.Enrollment.Approval"),
-                    }),
-                    new ComponentLink("Moderator", "آموزش", "~/Icons/List.gif", null, 0, "CourseEnrollment.Moderator", new ComponentLink[]
-                    {
-                        new ComponentLink("Lists", "s:Labels_Lists", "~/Icons/List.gif", null, 0, "CourseEnrollment.Moderator", new ComponentLink[]
-                        {
-                            new ComponentLink("ListSemester", "ترم", "~/Icons/BasicInfo.gif", "~/List.aspx?ComponentName=SystemGroup.General.CourseEnrollment&EntityName=Semester", 0, "CourseEnrollment.Moderator.Semester"),
-                            new ComponentLink("ListCourses", "دروس", "~/Icons/BasicInfo.gif", "~/List.aspx?ComponentName=SystemGroup.General.CourseEnrollment&EntityName=Course", 1, "CourseEnrollment.Moderator.Course"),
-                            new ComponentLink("ListMajors", "رشته های تحصیلی", "~/Icons/BasicInfo.gif", "~/List.aspx?ComponentName=SystemGroup.General.CourseEnrollment&EntityName=Major", 2, "CourseEnrollment.Moderator.Major"),
-                            new ComponentLink("ListPlans", "برنامه های تحصیلی", "~/Icons/BasicInfo.gif", "~/List.aspx?ComponentName=SystemGroup.General.CourseEnrollment&EntityName=SemesterCoursePlan", 3, "CourseEnrollment.Moderator.SemesterCoursePlan"),
-                            new ComponentLink("ListStudents", "لیست دانشجویان", "~/Icons/BasicInfo.gif", "~/List.aspx?ComponentName=SystemGroup.General.CourseEnrollment&EntityName=PartyMajor", 3, "CourseEnrollment.Moderator.PartyMajor")
-                        }),
-                    }),
-                })
-            };
+            return
+            [
+                new ComponentLink("University", "Labels_University", "~/Icons/Education.png", null, 3, [
+                    new ComponentLink("Student", "Labels_Student", "~/Icons/List.gif", null, 0,
+                    [
+                        new ComponentLink("ListEnrollments", "Labels_StudentEnrollmentInfo", "~/Icons/BasicInfo.gif", "~/List.aspx?ComponentName=SystemGroup.General.CourseEnrollment&EntityName=Enrollment", 0, "{CourseEnrollment.Enrollment.New | CourseEnrollment.Enrollment.Edit}"),
+                        new ComponentLink("Enrollment", "Labels_Enrollment", "~/Icons/Add.gif", "CourseEnrollment.Enrollment.New", typeof(EnrollmentPages.Edit), 0)
+                    ]),
+                    new ComponentLink("Professor", "Labels_Professor", "~/Icons/BasicInfo.gif", null, 0,
+                    [
+                        new ComponentLink("ListEnrollments", "Labels_StudentsEnrollmentInfo", "~/Icons/BasicInfo.gif", "~/List.aspx?ComponentName=SystemGroup.General.CourseEnrollment&EntityName=Enrollment", 0, "CourseEnrollment.Enrollment.Approval"),
+                        new ComponentLink("ListClasses", "Labels_ListClasses", "~/Icons/List.gif", "~/List.aspx?ComponentName=SystemGroup.General.CourseEnrollment&EntityName=SemesterCoursePlanItem&ViewName=AllProfessorSemesterCoursePlanItems", 1, "CourseEnrollment.Enrollment.Approval"),
+                    ]),
+                    new ComponentLink("Moderator", "Labels_Moderator", "~/Icons/List.gif", null, 0, "CourseEnrollment.Moderator",
+                    [
+                        new ComponentLink("Lists", "s:Labels_Lists", "~/Icons/List.gif", null, 0, "CourseEnrollment.Moderator",
+                        [
+                            new ComponentLink("ListSemester", "Labels_Semester", "~/Icons/BasicInfo.gif", "~/List.aspx?ComponentName=SystemGroup.General.CourseEnrollment&EntityName=Semester", 0, "CourseEnrollment.Moderator.Semester"),
+                            new ComponentLink("ListCourses", "Labels_Courses", "~/Icons/BasicInfo.gif", "~/List.aspx?ComponentName=SystemGroup.General.CourseEnrollment&EntityName=Course", 1, "CourseEnrollment.Moderator.Course"),
+                            new ComponentLink("ListMajors", "Labels_Majors", "~/Icons/BasicInfo.gif", "~/List.aspx?ComponentName=SystemGroup.General.CourseEnrollment&EntityName=Major", 2, "CourseEnrollment.Moderator.Major"),
+                            new ComponentLink("ListPlans", "Labels_SemesterCoursePlans", "~/Icons/BasicInfo.gif", "~/List.aspx?ComponentName=SystemGroup.General.CourseEnrollment&EntityName=SemesterCoursePlan", 3, "CourseEnrollment.Moderator.SemesterCoursePlan"),
+                            new ComponentLink("ListStudents", "Labels_Students", "~/Icons/BasicInfo.gif", "~/List.aspx?ComponentName=SystemGroup.General.CourseEnrollment&EntityName=PartyMajor", 3, "CourseEnrollment.Moderator.PartyMajor")
+                        ]),
+                    ]),
+                ])
+            ];
         }
 
         #endregion

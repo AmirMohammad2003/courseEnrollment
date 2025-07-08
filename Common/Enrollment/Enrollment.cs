@@ -44,7 +44,7 @@ namespace SystemGroup.General.CourseEnrollment.Common
 
         public override string GetEntityName()
         {
-            return "ثبت نام"; 
+            return "Labels_Enrollment"; 
         }
 
         public override void GetColumns(List<ColumnInfo> columns)
@@ -53,8 +53,8 @@ namespace SystemGroup.General.CourseEnrollment.Common
 
             columns.Add(new ReferenceColumnInfo("SemesterCoursePlanRef", "_"));
             columns.Add(new ReferenceColumnInfo("PartyRef", "_"));
-            columns.Add(new NumericColumnInfo("GPA", "معدل ترم", NumericType.FloatingPoint));
-            columns.Add(new StateColumnInfo("State", "وضعیت", typeof(Enrollment)));
+            columns.Add(new NumericColumnInfo("GPA", "Labels_GPA", NumericType.FloatingPoint));
+            columns.Add(new StateColumnInfo("State", "Labels_EnrollmentStatus", typeof(Enrollment)));
         }
 
         #endregion

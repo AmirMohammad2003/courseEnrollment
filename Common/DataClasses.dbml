@@ -88,6 +88,7 @@
       <Column Name="Taken" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Version" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
       <Association Name="SemesterCoursePlanItem_EnrollmentItem" Member="EnrollmentItems" ThisKey="ID" OtherKey="SemesterCoursePlanItemRef" Type="EnrollmentItem" />
+      <Association Name="SemesterCoursePlanItem_TimeTable" Member="TimeTables" ThisKey="ID" OtherKey="SemesterCoursePlanItemRef" Type="TimeTable" />
       <Association Name="Course_SemesterCoursePlanItem" Member="Course" ThisKey="CourseRef" OtherKey="ID" Type="Course" IsForeignKey="true" />
       <Association Name="SemesterCoursePlan_SemesterCoursePlanItem" Member="SemesterCoursePlan" ThisKey="SemesterCoursePlanRef" OtherKey="ID" Type="SemesterCoursePlan" IsForeignKey="true" />
     </Type>
@@ -117,6 +118,17 @@
       <Column Name="LastModificationDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Association Name="Enrollment_EnrollmentItem" Member="EnrollmentItems" ThisKey="ID" OtherKey="EnrollmentRef" Type="EnrollmentItem" />
       <Association Name="SemesterCoursePlan_Enrollment" Member="SemesterCoursePlan" ThisKey="SemesterCoursePlanRef" OtherKey="ID" Type="SemesterCoursePlan" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TimeTable" Member="TimeTables">
+    <Type Name="TimeTable">
+      <Column Name="TimeTableID" Member="ID" Storage="_TimeTableID" Modifier="Override" Type="System.Int64" DbType="BigInt NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SemesterCoursePlanItemRef" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="Start" Storage="_StartMinute" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="End" Storage="_EndHour" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DayOfTheWeek" Type="DayOfTheWeek" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Version" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="SemesterCoursePlanItem_TimeTable" Member="SemesterCoursePlanItem" ThisKey="SemesterCoursePlanItemRef" OtherKey="ID" Type="SemesterCoursePlanItem" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

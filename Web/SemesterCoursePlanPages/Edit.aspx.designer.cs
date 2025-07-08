@@ -85,5 +85,14 @@ namespace SystemGroup.General.CourseEnrollment.Web.SemesterCoursePlanPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::SystemGroup.Web.UI.Controls.SgGrid grdCourses;
+
+        /// <summary>
+        /// grdTimeTables control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::SystemGroup.Web.UI.Controls.SgGrid grdTimeTables;
     }
 }

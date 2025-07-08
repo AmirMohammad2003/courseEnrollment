@@ -7,12 +7,6 @@
         Sys.Observer.setValue(tempEntity, "PartyName", sender.getSelectedDataProperty("PartyName"));
     }
 
-//    if (tempEntity.CourseName == undefined && list.length === 0) {
-//        $find("sltSemesterCoursePlan").enable();
-//    } else {
-//        $find("sltSemesterCoursePlan").disable();
-//    }
-
 }
 
 function sltCourse_selectedIndexChanging(sender, args) {

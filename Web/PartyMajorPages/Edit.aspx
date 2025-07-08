@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Edit.aspx.cs" 
     Inherits="SystemGroup.General.CourseEnrollment.Web.PartyMajorPages.Edit" 
-    Title="اطلاعات دانشجو"%>
+    Title="Labels_Student"%>
 
 <!DOCTYPE html>
 
@@ -18,7 +18,7 @@
                         <sg:sgfieldlayout runat="server" labelcellwidth="130px">
                             <sg:sgtablerow>
                                 <sg:sgtablecell>
-                                    <sg:sgfieldlabel runat="server" text="دانشجو" required="true"></sg:sgfieldlabel>
+                                    <sg:sgfieldlabel runat="server" textkey="Labels_Student" required="true"></sg:sgfieldlabel>
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
                                     <sg:sgselector runat="server" id="sltParty"
@@ -28,13 +28,13 @@
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
                                     <sg:sgrequiredfieldvalidator runat="server" controltovalidate="sltParty"
-                                        errormessage="یک دانشجو انتخاب کنید.">
+                                        errormessagekey="Messages_ChooseStudent">
                                     </sg:sgrequiredfieldvalidator>
                                 </sg:sgtablecell>
                             </sg:sgtablerow>
                             <sg:sgtablerow>
                                 <sg:sgtablecell>
-                                    <sg:sgfieldlabel runat="server" text="رشته تحصیلی" required="true"></sg:sgfieldlabel>
+                                    <sg:sgfieldlabel runat="server" text="Labels_Major" required="true"></sg:sgfieldlabel>
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
                                     <sg:sgselector runat="server" id="sltMajor"
@@ -44,18 +44,18 @@
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
                                     <sg:sgrequiredfieldvalidator runat="server" controltovalidate="sltMajor"
-                                        errormessage="یک رشته تحصیلی انتخاب کنید.">
+                                        errormessagekey="Messages_ChooseMajor">
                                     </sg:sgrequiredfieldvalidator>
                                 </sg:sgtablecell>
                             </sg:sgtablerow>
                             <sg:sgtablerow>
                                 <sg:sgtablecell>
-                                    <sg:sgfieldlabel runat="server" text="استاد راهنما"></sg:sgfieldlabel>
+                                    <sg:sgfieldlabel runat="server" text="Labels_AssignedProfessor"></sg:sgfieldlabel>
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
                                     <sg:sgselector runat="server" id="sltProfessorParty"
                                         componentname="SystemGroup.General.IPartyManagement"
-                                        entityname="IParty" viewname="AllProfessorParties" >
+                                        entityname="IParty" viewname="AllProfessorParties">
                                     </sg:sgselector>
                                 </sg:sgtablecell>
                                 <sg:sgtablecell>
