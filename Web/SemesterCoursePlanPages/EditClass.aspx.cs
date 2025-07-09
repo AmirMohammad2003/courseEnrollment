@@ -128,9 +128,11 @@ namespace SystemGroup.General.CourseEnrollment.Web.SemesterCoursePlanPages
                             }
                         }
 
+
                         if (changed)
                         {
                             globalChanged = true;
+                            enrollment.GPA = EnrollmentBusiness.GetGPA(enrollment);
                             EnrollmentBusiness.Save(ref enrollment);
                         }
                     }

@@ -37,7 +37,7 @@ namespace SystemGroup.General.CourseEnrollment.Business
                 {
 
                 }
-                else if (changeSet.Count() != 1 || changeSet.First().PropertyName != "State")
+                else if (changeSet.Count() != 1 || (changeSet.First().PropertyName != "State" && changeSet.First().PropertyName != "GPA"))
                 {
                     throw this.CreateException("Messages_EnrollmentAccessDenied");
                 }

@@ -21,5 +21,7 @@ namespace SystemGroup.General.CourseEnrollment.Common
         [EntityView("AllEnrollment", "Labels_Enrollments", typeof(EnrollmentSimpleProjection), "SemesterName", ShowInViewList = false, SearchInProjection = true)]
         new IQueryable<Enrollment> FetchAll();
 
+        float GetGPA(Enrollment enrollment);
+
     }
 }

@@ -47,5 +47,22 @@ namespace SystemGroup.General.CourseEnrollment.Business
                    select enrollment;
         }
 
+        public virtual float GetGPA(Enrollment enrollment)
+        {
+            if (enrollment == null)
+            {
+                throw new ArgumentNullException(nameof(enrollment), "Enrollment cannot be null.");
+            }
+            enrollment.Load(i => i.EnrollmentItems);
+            var items = enrollment.EnrollmentItems;
+            if (items == null || items.Count == 0)
+            {
+                return 0.0f;
+            }
+            var totalScore = items.Sum(i => i.Score) ?? 0.0f;
+            var totalCount = items.Count;
+            return totalCount > 0 ? totalScore / totalCount : 0.0f;
+        }
+
     }
 }
