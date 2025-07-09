@@ -76,6 +76,7 @@
                                     </sg:sgselectorgridcolumn>
                                     <sg:sgtextgridcolumn propertyname="PartyName" headertext="Labels_Professor" allowedit="false" />
                                     <sg:sgtextgridcolumn propertyname="TimeTables" headertext="Labels_TimeTable" allowedit="false" />
+                                    <sg:sgnumericgridcolumn propertyname="Score" headertext="Labels_Score" allowedit="false" />
                                 </columns>
                             </sg:sggrid>
                         </telerik:radpageview>
